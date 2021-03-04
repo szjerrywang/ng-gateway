@@ -28,7 +28,7 @@ public class MQApplication implements CommandLineRunner {
 
     public static final void main(String[] args)
     {
-        SpringApplication.run(MQApplication.class);
+        SpringApplication.run(MQApplication.class, args);
     }
 
     @Override
