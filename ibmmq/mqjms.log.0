@@ -1,0 +1,117 @@
+March 4, 2021 8:43:25 AM UTC[main] com.ibm.mq.ese.config.KeyStoreConfig
+AMS1370: Warning. Plain text passwords have been detected in the configuration file. It is recommended that you protect these passwords using the AMS password protection tool.
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
+March 4, 2021 8:43:25 AM UTC[main] com.ibm.mq.ese.prot.MessageProtectionBCImpl
+The certificate of the sender with the subject name 'OU=PTS/219, O=Tiger Brokers Singapore Pte Ltd, L=Singapore, ST=Singapore, CN=TIGER ALPHALIONGROUP.COM, C=SG' is not valid.
+The certificate of the sender is not valid.
+See subsequent messages in the exception for more details about the cause of the error.
+--------------------------------------------------------------------
+March 4, 2021 8:43:26 AM UTC[main] com.ibm.mq.ese.intercept.JmqiPutInterceptorImpl
+The IBM MQ Advanced Message Security Java interceptor failed to protect message.
+The IBM MQ Advanced Message Security Java interceptor was not able to protect the message.
+See subsequent messages in the exception for more details about the cause of the error.
+--------------------------------------------------------------------
+March 4, 2021 8:50:45 AM UTC[main] com.ibm.mq.ese.config.KeyStoreConfig
+AMS1370: Warning. Plain text passwords have been detected in the configuration file. It is recommended that you protect these passwords using the AMS password protection tool.
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
+March 4, 2021 8:50:45 AM UTC[main] com.ibm.mq.ese.service.UserMapServiceImpl
+Could not read following keys from keystore configuration file: '.key_pass'.
+
+EXPLANATION:
+An error occurred when reading properties from the keystore configuration file.
+
+ACTION:
+Verify that the property in the keystore configuration file has correct value.
+--------------------------------------------------------------------
+March 4, 2021 8:50:46 AM UTC[main] com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl
+AMS1040: Failed to read keystore properties from the keystore configuration file.
+An error occurred when reading the properties from the keystore configuration file.
+Verify that the keystore configuration file is available and that the Java application has read access to this file.
+--------------------------------------------------------------------
+March 4, 2021 9:02:00 AM UTC[main] com.ibm.mq.ese.config.KeyStoreConfig
+AMS1370: Warning. Plain text passwords have been detected in the configuration file. It is recommended that you protect these passwords using the AMS password protection tool.
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
+March 4, 2021 9:02:00 AM UTC[main] com.ibm.mq.ese.prot.MessageProtectionBCImpl
+The certificate of the sender with the subject name 'OU=PTS/219, O=Tiger Brokers Singapore Pte Ltd, L=Singapore, ST=Singapore, CN=TIGER ALPHALIONGROUP.COM, C=SG' is not valid.
+The certificate of the sender is not valid.
+See subsequent messages in the exception for more details about the cause of the error.
+--------------------------------------------------------------------
+March 4, 2021 9:02:00 AM UTC[main] com.ibm.mq.ese.intercept.JmqiPutInterceptorImpl
+The IBM MQ Advanced Message Security Java interceptor failed to protect message.
+The IBM MQ Advanced Message Security Java interceptor was not able to protect the message.
+See subsequent messages in the exception for more details about the cause of the error.
+--------------------------------------------------------------------
+March 4, 2021 9:11:37 AM UTC[main] com.ibm.mq.ese.config.KeyStoreConfig
+AMS1370: Warning. Plain text passwords have been detected in the configuration file. It is recommended that you protect these passwords using the AMS password protection tool.
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
+March 4, 2021 9:11:37 AM UTC[main] com.ibm.mq.ese.prot.MessageProtectionBCImpl
+The certificate of the sender with the subject name 'OU=PTS/219, O=Tiger Brokers Singapore Pte Ltd, L=Singapore, ST=Singapore, CN=TIGER ALPHALIONGROUP.COM, C=SG' is not valid.
+The certificate of the sender is not valid.
+See subsequent messages in the exception for more details about the cause of the error.
+--------------------------------------------------------------------
+March 4, 2021 9:11:37 AM UTC[main] com.ibm.mq.ese.intercept.JmqiPutInterceptorImpl
+The IBM MQ Advanced Message Security Java interceptor failed to protect message.
+The IBM MQ Advanced Message Security Java interceptor was not able to protect the message.
+See subsequent messages in the exception for more details about the cause of the error.
+--------------------------------------------------------------------
+March 4, 2021 9:57:35 AM UTC[main] com.ibm.mq.ese.config.KeyStoreConfig
+AMS1370: Warning. Plain text passwords have been detected in the configuration file. It is recommended that you protect these passwords using the AMS password protection tool.
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
+March 4, 2021 9:59:41 AM UTC[main] com.ibm.mq.ese.config.KeyStoreConfig
+AMS1370: Warning. Plain text passwords have been detected in the configuration file. It is recommended that you protect these passwords using the AMS password protection tool.
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
+March 4, 2021 9:59:42 AM UTC[main] com.ibm.mq.ese.prot.MessageProtectionBCImpl
+The certificate of the sender with the subject name 'OU=PTS/219, O=Tiger Brokers Singapore Pte Ltd, L=Singapore, ST=Singapore, CN=TIGER ALPHALIONGROUP.COM, C=SG' is not valid.
+The certificate of the sender is not valid.
+See subsequent messages in the exception for more details about the cause of the error.
+--------------------------------------------------------------------
+March 4, 2021 9:59:42 AM UTC[main] com.ibm.mq.ese.intercept.JmqiPutInterceptorImpl
+The IBM MQ Advanced Message Security Java interceptor failed to protect message.
+The IBM MQ Advanced Message Security Java interceptor was not able to protect the message.
+See subsequent messages in the exception for more details about the cause of the error.
+--------------------------------------------------------------------
+March 4, 2021 10:02:28 AM UTC[main] com.ibm.mq.ese.config.KeyStoreConfig
+AMS1370: Warning. Plain text passwords have been detected in the configuration file. It is recommended that you protect these passwords using the AMS password protection tool.
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------

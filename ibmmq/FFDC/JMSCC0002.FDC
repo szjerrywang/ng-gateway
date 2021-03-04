@@ -1,0 +1,889 @@
+----------------------------------START FFST------------------------------------
+/home/centos/tiger/ng-gateway/ibmmq/FFDC/JMSCC0002.FDC PID:28202
+
+                                    IBM MQ classes for JMS and Java (AllClient packaging) First Failure Symptom Report
+                                            
+
+Product          :- IBM MQ classes for JMS and Java (AllClient packaging)
+Date/Time        :- Thu Mar 04 08:50:45 UTC 2021
+System time      :- 1614847845979
+Operating System :- Linux
+UserID           :- centos
+Java Vendor      :- Oracle Corporation
+Java Version     :- 25.222-b10
+
+Source Class     :- com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl
+Source Method    :- processExceptionAfterOpen
+ProbeID          :- MP005001
+Thread           :- name=main priority=5 group=main ccl=org.springframework.boot.loader.LaunchedURLClassLoader@17f052a3
+
+                                      Data
+                                      ----
+
+|   Queue manager Uid   :-  QMPTSMDEV_2017-06-28_13.18.16                   
+|   Queue manager name  :-  QMPTSMDEV                                       
+|   exception           :-  ExceptionDepth is 5
+|   exception           :-  
+|   |   Cause:1       :-  AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   Cause:2       :-  java.security.PrivilegedActionException: AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   Cause:3       :-  AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   Cause:4       :-  AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   Message:1     :-  AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   Message:3     :-  AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   Message:4     :-  AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   StackTrace:1  :-  AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.getCredentials(UserMapServiceImpl.java:298)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.getCredentials(UserMapServiceImpl.java:247)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.initCrypto(JmqiOpenInterceptorImpl.java:780)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.determinePolicy(JmqiOpenInterceptorImpl.java:721)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterOpen(JmqiOpenInterceptorImpl.java:608)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterSpiOpen(JmqiOpenInterceptorImpl.java:214)
+|   |   	at com.ibm.mq.ese.jmqi.InterceptedJmqiImpl.spiOpen(InterceptedJmqiImpl.java:562)
+|   |   	at com.ibm.mq.ese.jmqi.ESEJMQI.spiOpen(ESEJMQI.java:849)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQMessageProducer$SpiIdentifiedProducerShadow.initialise(WMQMessageProducer.java:839)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.<init>(WMQMessageProducer.java:1226)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQSession.createProducer(WMQSession.java:1134)
+|   |   	at com.ibm.msg.client.jms.internal.JmsSessionImpl.createProducer(JmsSessionImpl.java:1479)
+|   |   	at com.ibm.mq.jms.MQSession.createProducer(MQSession.java:661)
+|   |   	at org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.getCachedProducer(CachingConnectionFactory.java:400)
+|   |   	at org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.invoke(CachingConnectionFactory.java:335)
+|   |   	at com.sun.proxy.$Proxy48.createProducer(Unknown Source)
+|   |   	at org.springframework.jms.core.JmsTemplate.doCreateProducer(JmsTemplate.java:1115)
+|   |   	at org.springframework.jms.core.JmsTemplate.createProducer(JmsTemplate.java:1096)
+|   |   	at org.springframework.jms.core.JmsTemplate.doSend(JmsTemplate.java:602)
+|   |   	at org.springframework.jms.core.JmsTemplate.lambda$send$3(JmsTemplate.java:586)
+|   |   	at org.springframework.jms.core.JmsTemplate.execute(JmsTemplate.java:504)
+|   |   	at org.springframework.jms.core.JmsTemplate.send(JmsTemplate.java:584)
+|   |   	at org.springframework.jms.core.JmsTemplate.convertAndSend(JmsTemplate.java:661)
+|   |   	at top.didasoft.core.ibm.mq.MQApplication.run(MQApplication.java:48)
+|   |   	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:804)
+|   |   	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:788)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+|   |   	at top.didasoft.core.ibm.mq.MQApplication.main(MQApplication.java:32)
+|   |   	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+|   |   	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+|   |   	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+|   |   	at java.lang.reflect.Method.invoke(Method.java:498)
+|   |   	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+|   |   	at org.springframework.boot.loader.Launcher.launch(Launcher.java:107)
+|   |   	at org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+|   |   	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:88)
+|   |   Caused by: java.security.PrivilegedActionException: AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   	at java.security.AccessController.doPrivileged(Native Method)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.getCredentials(UserMapServiceImpl.java:278)
+|   |   	... 37 more
+|   |   Caused by: AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.readKeystoreConfig(UserMapServiceImpl.java:212)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl$2.run(UserMapServiceImpl.java:285)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl$2.run(UserMapServiceImpl.java:278)
+|   |   	... 39 more
+|   |   Caused by: AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.readKeystoreConfig(UserMapServiceImpl.java:167)
+|   |   	... 41 more
+|   |   
+|   |   StackTrace:2  :-  java.security.PrivilegedActionException: AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   	at java.security.AccessController.doPrivileged(Native Method)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.getCredentials(UserMapServiceImpl.java:278)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.getCredentials(UserMapServiceImpl.java:247)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.initCrypto(JmqiOpenInterceptorImpl.java:780)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.determinePolicy(JmqiOpenInterceptorImpl.java:721)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterOpen(JmqiOpenInterceptorImpl.java:608)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterSpiOpen(JmqiOpenInterceptorImpl.java:214)
+|   |   	at com.ibm.mq.ese.jmqi.InterceptedJmqiImpl.spiOpen(InterceptedJmqiImpl.java:562)
+|   |   	at com.ibm.mq.ese.jmqi.ESEJMQI.spiOpen(ESEJMQI.java:849)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQMessageProducer$SpiIdentifiedProducerShadow.initialise(WMQMessageProducer.java:839)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.<init>(WMQMessageProducer.java:1226)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQSession.createProducer(WMQSession.java:1134)
+|   |   	at com.ibm.msg.client.jms.internal.JmsSessionImpl.createProducer(JmsSessionImpl.java:1479)
+|   |   	at com.ibm.mq.jms.MQSession.createProducer(MQSession.java:661)
+|   |   	at org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.getCachedProducer(CachingConnectionFactory.java:400)
+|   |   	at org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.invoke(CachingConnectionFactory.java:335)
+|   |   	at com.sun.proxy.$Proxy48.createProducer(Unknown Source)
+|   |   	at org.springframework.jms.core.JmsTemplate.doCreateProducer(JmsTemplate.java:1115)
+|   |   	at org.springframework.jms.core.JmsTemplate.createProducer(JmsTemplate.java:1096)
+|   |   	at org.springframework.jms.core.JmsTemplate.doSend(JmsTemplate.java:602)
+|   |   	at org.springframework.jms.core.JmsTemplate.lambda$send$3(JmsTemplate.java:586)
+|   |   	at org.springframework.jms.core.JmsTemplate.execute(JmsTemplate.java:504)
+|   |   	at org.springframework.jms.core.JmsTemplate.send(JmsTemplate.java:584)
+|   |   	at org.springframework.jms.core.JmsTemplate.convertAndSend(JmsTemplate.java:661)
+|   |   	at top.didasoft.core.ibm.mq.MQApplication.run(MQApplication.java:48)
+|   |   	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:804)
+|   |   	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:788)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+|   |   	at top.didasoft.core.ibm.mq.MQApplication.main(MQApplication.java:32)
+|   |   	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+|   |   	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+|   |   	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+|   |   	at java.lang.reflect.Method.invoke(Method.java:498)
+|   |   	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+|   |   	at org.springframework.boot.loader.Launcher.launch(Launcher.java:107)
+|   |   	at org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+|   |   	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:88)
+|   |   Caused by: AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.readKeystoreConfig(UserMapServiceImpl.java:212)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl$2.run(UserMapServiceImpl.java:285)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl$2.run(UserMapServiceImpl.java:278)
+|   |   	... 39 more
+|   |   Caused by: AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.readKeystoreConfig(UserMapServiceImpl.java:167)
+|   |   	... 41 more
+|   |   
+|   |   StackTrace:3  :-  AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.readKeystoreConfig(UserMapServiceImpl.java:212)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl$2.run(UserMapServiceImpl.java:285)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl$2.run(UserMapServiceImpl.java:278)
+|   |   	at java.security.AccessController.doPrivileged(Native Method)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.getCredentials(UserMapServiceImpl.java:278)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.getCredentials(UserMapServiceImpl.java:247)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.initCrypto(JmqiOpenInterceptorImpl.java:780)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.determinePolicy(JmqiOpenInterceptorImpl.java:721)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterOpen(JmqiOpenInterceptorImpl.java:608)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterSpiOpen(JmqiOpenInterceptorImpl.java:214)
+|   |   	at com.ibm.mq.ese.jmqi.InterceptedJmqiImpl.spiOpen(InterceptedJmqiImpl.java:562)
+|   |   	at com.ibm.mq.ese.jmqi.ESEJMQI.spiOpen(ESEJMQI.java:849)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQMessageProducer$SpiIdentifiedProducerShadow.initialise(WMQMessageProducer.java:839)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.<init>(WMQMessageProducer.java:1226)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQSession.createProducer(WMQSession.java:1134)
+|   |   	at com.ibm.msg.client.jms.internal.JmsSessionImpl.createProducer(JmsSessionImpl.java:1479)
+|   |   	at com.ibm.mq.jms.MQSession.createProducer(MQSession.java:661)
+|   |   	at org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.getCachedProducer(CachingConnectionFactory.java:400)
+|   |   	at org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.invoke(CachingConnectionFactory.java:335)
+|   |   	at com.sun.proxy.$Proxy48.createProducer(Unknown Source)
+|   |   	at org.springframework.jms.core.JmsTemplate.doCreateProducer(JmsTemplate.java:1115)
+|   |   	at org.springframework.jms.core.JmsTemplate.createProducer(JmsTemplate.java:1096)
+|   |   	at org.springframework.jms.core.JmsTemplate.doSend(JmsTemplate.java:602)
+|   |   	at org.springframework.jms.core.JmsTemplate.lambda$send$3(JmsTemplate.java:586)
+|   |   	at org.springframework.jms.core.JmsTemplate.execute(JmsTemplate.java:504)
+|   |   	at org.springframework.jms.core.JmsTemplate.send(JmsTemplate.java:584)
+|   |   	at org.springframework.jms.core.JmsTemplate.convertAndSend(JmsTemplate.java:661)
+|   |   	at top.didasoft.core.ibm.mq.MQApplication.run(MQApplication.java:48)
+|   |   	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:804)
+|   |   	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:788)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+|   |   	at top.didasoft.core.ibm.mq.MQApplication.main(MQApplication.java:32)
+|   |   	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+|   |   	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+|   |   	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+|   |   	at java.lang.reflect.Method.invoke(Method.java:498)
+|   |   	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+|   |   	at org.springframework.boot.loader.Launcher.launch(Launcher.java:107)
+|   |   	at org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+|   |   	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:88)
+|   |   Caused by: AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.readKeystoreConfig(UserMapServiceImpl.java:167)
+|   |   	... 41 more
+|   |   
+|   |   StackTrace:4  :-  AMS1040: Failed to read keystore properties from the keystore configuration file.
+|   |   An error occurred when reading the properties from the keystore configuration file.
+|   |   Verify that the keystore configuration file is available and that the Java application has read access to this file.
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.readKeystoreConfig(UserMapServiceImpl.java:167)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl$2.run(UserMapServiceImpl.java:285)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl$2.run(UserMapServiceImpl.java:278)
+|   |   	at java.security.AccessController.doPrivileged(Native Method)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.getCredentials(UserMapServiceImpl.java:278)
+|   |   	at com.ibm.mq.ese.service.UserMapServiceImpl.getCredentials(UserMapServiceImpl.java:247)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.initCrypto(JmqiOpenInterceptorImpl.java:780)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.determinePolicy(JmqiOpenInterceptorImpl.java:721)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterOpen(JmqiOpenInterceptorImpl.java:608)
+|   |   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterSpiOpen(JmqiOpenInterceptorImpl.java:214)
+|   |   	at com.ibm.mq.ese.jmqi.InterceptedJmqiImpl.spiOpen(InterceptedJmqiImpl.java:562)
+|   |   	at com.ibm.mq.ese.jmqi.ESEJMQI.spiOpen(ESEJMQI.java:849)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQMessageProducer$SpiIdentifiedProducerShadow.initialise(WMQMessageProducer.java:839)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.<init>(WMQMessageProducer.java:1226)
+|   |   	at com.ibm.msg.client.wmq.internal.WMQSession.createProducer(WMQSession.java:1134)
+|   |   	at com.ibm.msg.client.jms.internal.JmsSessionImpl.createProducer(JmsSessionImpl.java:1479)
+|   |   	at com.ibm.mq.jms.MQSession.createProducer(MQSession.java:661)
+|   |   	at org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.getCachedProducer(CachingConnectionFactory.java:400)
+|   |   	at org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.invoke(CachingConnectionFactory.java:335)
+|   |   	at com.sun.proxy.$Proxy48.createProducer(Unknown Source)
+|   |   	at org.springframework.jms.core.JmsTemplate.doCreateProducer(JmsTemplate.java:1115)
+|   |   	at org.springframework.jms.core.JmsTemplate.createProducer(JmsTemplate.java:1096)
+|   |   	at org.springframework.jms.core.JmsTemplate.doSend(JmsTemplate.java:602)
+|   |   	at org.springframework.jms.core.JmsTemplate.lambda$send$3(JmsTemplate.java:586)
+|   |   	at org.springframework.jms.core.JmsTemplate.execute(JmsTemplate.java:504)
+|   |   	at org.springframework.jms.core.JmsTemplate.send(JmsTemplate.java:584)
+|   |   	at org.springframework.jms.core.JmsTemplate.convertAndSend(JmsTemplate.java:661)
+|   |   	at top.didasoft.core.ibm.mq.MQApplication.run(MQApplication.java:48)
+|   |   	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:804)
+|   |   	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:788)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+|   |   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+|   |   	at top.didasoft.core.ibm.mq.MQApplication.main(MQApplication.java:32)
+|   |   	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+|   |   	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+|   |   	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+|   |   	at java.lang.reflect.Method.invoke(Method.java:498)
+|   |   	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+|   |   	at org.springframework.boot.loader.Launcher.launch(Launcher.java:107)
+|   |   	at org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+|   |   	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:88)
+|   |   
+
+                              Version information
+                              -------------------
+
+IBM MQ JMS Provider
+9.2.1.0
+p921-L201112.1
+Production
+Component Title: IBM MQ JMS Provider
+Component Name:  com.ibm.msg.client.wmq
+Version:         9.2.1.0
+Class Name:      class com.ibm.msg.client.wmq.factories.WMQComponent
+CMVC:            p921-L201112.1
+Jar location:    file:/home/centos/tiger/ng-gateway/ibmmq/target/ibmmq-0.0.1.jar
+Factory Class:   class com.ibm.msg.client.wmq.factories.WMQFactoryFactory
+
+Common Services for Java Platform, Standard Edition
+9.2.1.0
+p921-L201112.1
+Production
+inPreferenceTo[0]: com.ibm.msg.client.commonservices.j2me
+Component Title:   Common Services for Java Platform, Standard Edition
+Component Name:    com.ibm.msg.client.commonservices.j2se
+Version:           9.2.1.0
+Class Name:        class com.ibm.msg.client.commonservices.j2se.J2SEComponent
+CMVC:              p921-L201112.1
+Jar location:      file:/home/centos/tiger/ng-gateway/ibmmq/target/ibmmq-0.0.1.jar
+Factory Class:     class com.ibm.msg.client.commonservices.j2se.CommonServicesImplementation
+
+Java Message Service Client
+9.2.1.0
+p921-L201112.1
+Production
+Component Title: Java Message Service Client
+Component Name:  com.ibm.msg.client.jms
+Version:         9.2.1.0
+Class Name:      class com.ibm.msg.client.jms.internal.JMSComponent
+CMVC:            p921-L201112.1
+Jar location:    file:/home/centos/tiger/ng-gateway/ibmmq/target/ibmmq-0.0.1.jar
+Factory Class:   null
+
+IBM MQ classes for Java Message Service
+9.2.1.0
+p921-L201112.1
+Production
+Component Title: IBM MQ classes for Java Message Service
+Component Name:  com.ibm.mq.jms
+Version:         9.2.1.0
+Class Name:      class com.ibm.mq.jms.MQJMSComponent
+CMVC:            p921-L201112.1
+Jar location:    file:/home/centos/tiger/ng-gateway/ibmmq/target/ibmmq-0.0.1.jar
+Factory Class:   null
+
+IBM MQ classes for Java
+9.2.1.0
+p921-L201112.1
+Production
+Component Title: IBM MQ classes for Java
+Component Name:  com.ibm.mq
+Version:         9.2.1.0
+Class Name:      class com.ibm.mq.MQJavaComponent
+CMVC:            p921-L201112.1
+Jar location:    file:/home/centos/tiger/ng-gateway/ibmmq/target/ibmmq-0.0.1.jar
+Factory Class:   null
+
+
+
+                                  Stack trace
+                                  -----------
+
+Stack trace to show the location of the FFST call
+|   FFST Location  :-  java.lang.Exception
+|   	at com.ibm.msg.client.commonservices.trace.Trace.getCurrentPosition(Trace.java:2152)
+|   	at com.ibm.msg.client.commonservices.trace.Trace.createFFSTString(Trace.java:2059)
+|   	at com.ibm.msg.client.commonservices.trace.Trace.ffstInternal(Trace.java:1943)
+|   	at com.ibm.msg.client.commonservices.trace.Trace.ffst(Trace.java:1801)
+|   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.processExceptionAfterOpen(JmqiOpenInterceptorImpl.java:927)
+|   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterOpen(JmqiOpenInterceptorImpl.java:637)
+|   	at com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterSpiOpen(JmqiOpenInterceptorImpl.java:214)
+|   	at com.ibm.mq.ese.jmqi.InterceptedJmqiImpl.spiOpen(InterceptedJmqiImpl.java:562)
+|   	at com.ibm.mq.ese.jmqi.ESEJMQI.spiOpen(ESEJMQI.java:849)
+|   	at com.ibm.msg.client.wmq.internal.WMQMessageProducer$SpiIdentifiedProducerShadow.initialise(WMQMessageProducer.java:839)
+|   	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.<init>(WMQMessageProducer.java:1226)
+|   	at com.ibm.msg.client.wmq.internal.WMQSession.createProducer(WMQSession.java:1134)
+|   	at com.ibm.msg.client.jms.internal.JmsSessionImpl.createProducer(JmsSessionImpl.java:1479)
+|   	at com.ibm.mq.jms.MQSession.createProducer(MQSession.java:661)
+|   	at org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.getCachedProducer(CachingConnectionFactory.java:400)
+|   	at org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.invoke(CachingConnectionFactory.java:335)
+|   	at com.sun.proxy.$Proxy48.createProducer(Unknown Source)
+|   	at org.springframework.jms.core.JmsTemplate.doCreateProducer(JmsTemplate.java:1115)
+|   	at org.springframework.jms.core.JmsTemplate.createProducer(JmsTemplate.java:1096)
+|   	at org.springframework.jms.core.JmsTemplate.doSend(JmsTemplate.java:602)
+|   	at org.springframework.jms.core.JmsTemplate.lambda$send$3(JmsTemplate.java:586)
+|   	at org.springframework.jms.core.JmsTemplate.execute(JmsTemplate.java:504)
+|   	at org.springframework.jms.core.JmsTemplate.send(JmsTemplate.java:584)
+|   	at org.springframework.jms.core.JmsTemplate.convertAndSend(JmsTemplate.java:661)
+|   	at top.didasoft.core.ibm.mq.MQApplication.run(MQApplication.java:48)
+|   	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:804)
+|   	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:788)
+|   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+|   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+|   	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+|   	at top.didasoft.core.ibm.mq.MQApplication.main(MQApplication.java:32)
+|   	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+|   	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+|   	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+|   	at java.lang.reflect.Method.invoke(Method.java:498)
+|   	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+|   	at org.springframework.boot.loader.Launcher.launch(Launcher.java:107)
+|   	at org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+|   	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:88)
+|   
+
+                            Property Store Contents
+                            -----------------------
+
+All currently set properties
+|   CONSOLE_LOG_CHARSET               :-  UTF-8
+|   FILE_LOG_CHARSET                  :-  UTF-8
+|   PID                               :-  28202
+|   awt.toolkit                       :-  sun.awt.X11.XToolkit
+|   file.encoding                     :-  UTF-8
+|   file.encoding.pkg                 :-  sun.io
+|   file.separator                    :-  /
+|   java.awt.graphicsenv              :-  sun.awt.X11GraphicsEnvironment
+|   java.awt.headless                 :-  true
+|   java.awt.printerjob               :-  sun.print.PSPrinterJob
+|   java.class.path                   :-  target/ibmmq-0.0.1.jar
+|   java.class.version                :-  52.0
+|   java.endorsed.dirs                :-  /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/lib/endorsed
+|   java.ext.dirs                     :-  /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/lib/ext:/usr/java/packages/lib/ext
+|   java.home                         :-  /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre
+|   java.io.tmpdir                    :-  /tmp
+|   java.library.path                 :-  /home/centos/src/sgx/lib:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+|   java.protocol.handler.pkgs        :-  org.springframework.boot.loader
+|   java.runtime.name                 :-  OpenJDK Runtime Environment
+|   java.runtime.version              :-  1.8.0_222-b10
+|   java.specification.name           :-  Java Platform API Specification
+|   java.specification.vendor         :-  Oracle Corporation
+|   java.specification.version        :-  1.8
+|   java.vendor                       :-  Oracle Corporation
+|   java.vendor.url                   :-  http://java.oracle.com/
+|   java.vendor.url.bug               :-  http://bugreport.sun.com/bugreport/
+|   java.version                      :-  1.8.0_222
+|   java.vm.info                      :-  mixed mode
+|   java.vm.name                      :-  OpenJDK 64-Bit Server VM
+|   java.vm.specification.name        :-  Java Virtual Machine Specification
+|   java.vm.specification.vendor      :-  Oracle Corporation
+|   java.vm.specification.version     :-  1.8
+|   java.vm.vendor                    :-  Oracle Corporation
+|   java.vm.version                   :-  25.222-b10
+|   javax.net.debug                   :-  ssl
+|   javax.net.ssl.keyStore            :-  /home/centos/.mqs/tiger.jks
+|   javax.net.ssl.keyStorePassword    :-  ********
+|   javax.net.ssl.trustStore          :-  /home/centos/.mqs/tiger.jks
+|   javax.net.ssl.trustStorePassword  :-  ********
+|   line.separator                    :-  
+|   
+|   os.arch                           :-  amd64
+|   os.name                           :-  Linux
+|   os.version                        :-  3.10.0-957.1.3.el7.x86_64
+|   path.separator                    :-  :
+|   spring.beaninfo.ignore            :-  true
+|   sun.arch.data.model               :-  64
+|   sun.boot.class.path               :-  /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/lib/resources.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/lib/rt.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/lib/jce.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/lib/charsets.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/lib/jfr.jar:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/classes
+|   sun.boot.library.path             :-  /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/lib/amd64
+|   sun.cpu.endian                    :-  little
+|   sun.cpu.isalist                   :-  
+|   sun.io.unicode.encoding           :-  UnicodeLittle
+|   sun.java.command                  :-  target/ibmmq-0.0.1.jar --spring.config.location=file:/home/centos/.mqs/application.yml
+|   sun.java.launcher                 :-  SUN_STANDARD
+|   sun.jnu.encoding                  :-  UTF-8
+|   sun.management.compiler           :-  HotSpot 64-Bit Tiered Compilers
+|   sun.os.patch.level                :-  unknown
+|   user.country                      :-  US
+|   user.dir                          :-  /home/centos/tiger/ng-gateway/ibmmq
+|   user.home                         :-  /home/centos
+|   user.language                     :-  en
+|   user.name                         :-  centos
+|   user.timezone                     :-  UTC
+
+                           WorkQueueMananger Contents
+                           --------------------------
+
+|   Current ThreadPool size      :-  1
+|   Maintain ThreadPool size     :-  false
+|   Maximum ThreadPool size      :-  -1
+|   ThreadPool inactive timeout  :-  0
+
+                               Runtime properties
+                               ------------------
+
+|   Available processors         :-  2
+|   Free memory in bytes (now)   :-  71329784
+|   Max memory in bytes          :-  870842368
+|   Total memory in bytes (now)  :-  157286400
+
+                           Component Manager Contents
+                           --------------------------
+
+Common Services Components:
+|   CMVC               :-  p921-L201112.1
+|   Class Name         :-  class com.ibm.msg.client.commonservices.j2se.J2SEComponent
+|   Component Name     :-  com.ibm.msg.client.commonservices.j2se
+|   Component Title    :-  Common Services for Java Platform, Standard Edition
+|   Factory Class      :-  class com.ibm.msg.client.commonservices.j2se.CommonServicesImplementation
+|   Jar location       :-  file:/home/centos/tiger/ng-gateway/ibmmq/target/ibmmq-0.0.1.jar
+|   Version            :-  9.2.1.0
+|   inPreferenceTo[0]  :-  com.ibm.msg.client.commonservices.j2me
+
+Messaging Provider Components:
+|   CMVC             :-  p921-L201112.1
+|   Class Name       :-  class com.ibm.msg.client.wmq.factories.WMQComponent
+|   Component Name   :-  com.ibm.msg.client.wmq
+|   Component Title  :-  IBM MQ JMS Provider
+|   Factory Class    :-  class com.ibm.msg.client.wmq.factories.WMQFactoryFactory
+|   Jar location     :-  file:/home/centos/tiger/ng-gateway/ibmmq/target/ibmmq-0.0.1.jar
+|   Version          :-  9.2.1.0
+
+
+
+
+                         Provider Specific Information
+                         -----------------------------
+
+Overview of JMS System
+Num. Contexts    : 0
+Num. Connections : 1
+Num. Sessions    : 1
+Num. Consumers   : 0
+Num. Producers   : 1
+
+Detailed JMS System Information
+Contexts      : 
+Connections      : 
+|   Instance                    :-  com.ibm.msg.client.wmq.internal.WMQConnection@212bf671
+|   connectOptions              :-  version:5(0x5) options:64(0x40) option flags:'{MQCNO_HANDLE_SHARE_BLOCK}' clientConn:[<null>] connTag:0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 sslConfig:[version:1(0x1) keyRepository:'<null>' cryptoHardware:'<null>' authInfoRecCount:0(0x0) keyResetCount:0(0x0) fipsRequired:0(0x0) encryptionPolicySuiteB:(1(0x1),0(0x0),0(0x0),0(0x0))certificateValPolicy:0(0x0) certificateLabel:'' ] connectionId:414D5143514D5054534D4445562020203489406001F36025 securityParms:[<null>] ccdtUrl:'<null>' ccdtUrlLength:0(0x0) applName:'<null>' 
+|   exceptionListener           :-  com.ibm.msg.client.jms.internal.JmsProviderExceptionListener@13c10b87
+|   helper                      :-  com.ibm.msg.client.wmq.internal.WMQConsumerOwnerShadow@6a01e23
+|   queueManagerName            :-  QMPTSMDEV
+|   tempQPrefix                 :-  <null>
+|   temporaryDestinationNumber  :-  1
+|   temporaryModelQ             :-  <null>
+|   XMSC_ADMIN_OBJECT_TYPE              :-  20
+|   XMSC_ASYNC_EXCEPTIONS               :-  1
+|   XMSC_CLIENT_ID                      :-  <null>
+|   XMSC_CONNECTION_TYPE                :-  1
+|   XMSC_CONNECTION_TYPE_NAME           :-  com.ibm.msg.client.wmq
+|   XMSC_OBJECT_IDENTITY                :-  556529265
+|   XMSC_PASSWORD                       :-  ********
+|   XMSC_PASSWORD_WAS_NULL              :-  true
+|   XMSC_RTT_DIRECT_AUTH                :-  0
+|   XMSC_RTT_PROXY_HOSTNAME             :-  <null>
+|   XMSC_RTT_PROXY_PORT                 :-  443
+|   XMSC_USERID                         :-  
+|   XMSC_WMQ_BROKER_CC_SUBQ             :-  SYSTEM.JMS.ND.CC.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_BROKER_CONTROLQ            :-  SYSTEM.BROKER.CONTROL.QUEUE
+|   XMSC_WMQ_BROKER_PUBQ                :-  SYSTEM.BROKER.DEFAULT.STREAM
+|   XMSC_WMQ_BROKER_QMGR                :-  
+|   XMSC_WMQ_BROKER_SUBQ                :-  SYSTEM.JMS.ND.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_CAPABILITY_ADVANCED        :-  true
+|   XMSC_WMQ_CCDTURL                    :-  file:///home/centos/.mqs/AMQCLCHL.TAB_219_MDEV
+|   XMSC_WMQ_CF_DESCRIPTION             :-  <null>
+|   XMSC_WMQ_CHANNEL                    :-  SYSTEM.DEF.SVRCONN
+|   XMSC_WMQ_CLEANUP_INTERVAL           :-  3600000
+|   XMSC_WMQ_CLEANUP_LEVEL              :-  1
+|   XMSC_WMQ_CLIENT_RECONNECT_OPTIONS   :-  0
+|   XMSC_WMQ_CLIENT_RECONNECT_TIMEOUT   :-  1800
+|   XMSC_WMQ_CLONE_SUPPORT              :-  0
+|   XMSC_WMQ_COMMAND_LEVEL              :-  910
+|   XMSC_WMQ_CONNECTION_MODE            :-  1
+|   XMSC_WMQ_CONNECTION_NAME_LIST_INT   :-  localhost(1414)
+|   XMSC_WMQ_CONNECTION_TAG             :-  [B@5a955565
+|   XMSC_WMQ_CONNECT_OPTIONS            :-  0
+|   XMSC_WMQ_HEADER_COMP                :-  [0]
+|   XMSC_WMQ_HOST_NAME                  :-  ptsgatewaymdevv.qasgx.com/10.37.253.138
+|   XMSC_WMQ_LOCAL_ADDRESS              :-  
+|   XMSC_WMQ_MAP_NAME_STYLE             :-  true
+|   XMSC_WMQ_MAX_BUFFER_SIZE            :-  1000
+|   XMSC_WMQ_MESSAGE_RETENTION          :-  1
+|   XMSC_WMQ_MESSAGE_SELECTION          :-  0
+|   XMSC_WMQ_MSG_BATCH_SIZE             :-  10
+|   XMSC_WMQ_MSG_COMP                   :-  [0]
+|   XMSC_WMQ_OPT_PUB                    :-  false
+|   XMSC_WMQ_OUTCOME_NOTIFICATION       :-  true
+|   XMSC_WMQ_POLLING_INTERVAL           :-  5000
+|   XMSC_WMQ_PORT                       :-  6502
+|   XMSC_WMQ_PROCESS_DURATION           :-  0
+|   XMSC_WMQ_PROVIDER_VERSION           :-  8.0.0.0
+|   XMSC_WMQ_PUB_ACK_INTERVAL           :-  25
+|   XMSC_WMQ_QMGR_CCSID                 :-  819
+|   XMSC_WMQ_QUEUE_MANAGER              :-  QMPTSMDEV
+|   XMSC_WMQ_RECEIVE_EXIT               :-  <null>
+|   XMSC_WMQ_RECEIVE_EXIT_INIT          :-  <null>
+|   XMSC_WMQ_RECEIVE_ISOLATION          :-  0
+|   XMSC_WMQ_REMOTE_QMGR_QSGNAME        :-  <null>
+|   XMSC_WMQ_RESCAN_INTERVAL            :-  5000
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER     :-  QMPTSMDEV
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER_ID  :-  QMPTSMDEV_2017-06-28_13.18.16                   
+|   XMSC_WMQ_SECURITY_EXIT              :-  <null>
+|   XMSC_WMQ_SECURITY_EXIT_INIT         :-  <null>
+|   XMSC_WMQ_SEND_CHECK_COUNT           :-  0
+|   XMSC_WMQ_SEND_EXIT                  :-  <null>
+|   XMSC_WMQ_SEND_EXIT_INIT             :-  <null>
+|   XMSC_WMQ_SHARE_CONV_ALLOWED         :-  1
+|   XMSC_WMQ_SPARSE_SUBSCRIPTIONS       :-  false
+|   XMSC_WMQ_SSL_CERT_STORES_COL        :-  <null>
+|   XMSC_WMQ_SSL_CERT_STORES_STR        :-  <null>
+|   XMSC_WMQ_SSL_CIPHER_SUITE           :-  <null>
+|   XMSC_WMQ_SSL_FIPS_REQUIRED          :-  false
+|   XMSC_WMQ_SSL_KEY_RESETCOUNT         :-  0
+|   XMSC_WMQ_SSL_PEER_NAME              :-  <null>
+|   XMSC_WMQ_SSL_SOCKET_FACTORY         :-  <null>
+|   XMSC_WMQ_STATUS_REFRESH_INTERVAL    :-  60000
+|   XMSC_WMQ_SUBSCRIPTION_STORE         :-  1
+|   XMSC_WMQ_SYNCPOINT_ALL_GETS         :-  false
+|   XMSC_WMQ_TARGET_CLIENT_MATCHING     :-  true
+|   XMSC_WMQ_TEMPORARY_MODEL            :-  SYSTEM.DEFAULT.MODEL.QUEUE
+|   XMSC_WMQ_TEMP_Q_PREFIX              :-  
+|   XMSC_WMQ_TEMP_TOPIC_PREFIX          :-  
+|   XMSC_WMQ_USE_CONNECTION_POOLING     :-  true
+|   brokerVersion                       :-  -1
+|   failIfQuiesce                       :-  1
+|   multicast                           :-  0
+|   version                             :-  7
+|   wildcardFormat                      :-  0
+
+Sessions         : 
+|   Instance           :-  com.ibm.msg.client.wmq.internal.WMQSession@3a079870
+|   Parent Connection  :-  com.ibm.msg.client.wmq.internal.WMQConnection@212bf671
+|   ackMode            :-  1
+|   asfConsumer        :-  <null>
+|   asfDestination     :-  <null>
+|   asyncPutCounter    :-  com.ibm.msg.client.wmq.internal.WMQSession$AsyncPutCounter@6293abcc
+|   didRecovAsyncPut   :-  false
+|   helper             :-  com.ibm.msg.client.wmq.internal.WMQConsumerOwnerShadow@7995092a
+|   inSyncpoint        :-  false
+|   queueManagerName   :-  QMPTSMDEV
+|   XMSC_ACKNOWLEDGE_MODE               :-  1
+|   XMSC_ADMIN_OBJECT_TYPE              :-  20
+|   XMSC_ASYNC_EXCEPTIONS               :-  1
+|   XMSC_CLIENT_ID                      :-  <null>
+|   XMSC_CONNECTION_TYPE                :-  1
+|   XMSC_CONNECTION_TYPE_NAME           :-  com.ibm.msg.client.wmq
+|   XMSC_OBJECT_IDENTITY                :-  973576304
+|   XMSC_PASSWORD                       :-  ********
+|   XMSC_PASSWORD_WAS_NULL              :-  true
+|   XMSC_RTT_DIRECT_AUTH                :-  0
+|   XMSC_RTT_PROXY_HOSTNAME             :-  <null>
+|   XMSC_RTT_PROXY_PORT                 :-  443
+|   XMSC_TRANSACTED                     :-  false
+|   XMSC_USERID                         :-  
+|   XMSC_WMQ_BROKER_CC_SUBQ             :-  SYSTEM.JMS.ND.CC.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_BROKER_CONTROLQ            :-  SYSTEM.BROKER.CONTROL.QUEUE
+|   XMSC_WMQ_BROKER_PUBQ                :-  SYSTEM.BROKER.DEFAULT.STREAM
+|   XMSC_WMQ_BROKER_QMGR                :-  
+|   XMSC_WMQ_BROKER_SUBQ                :-  SYSTEM.JMS.ND.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_CAPABILITY_ADVANCED        :-  true
+|   XMSC_WMQ_CCDTURL                    :-  file:///home/centos/.mqs/AMQCLCHL.TAB_219_MDEV
+|   XMSC_WMQ_CF_DESCRIPTION             :-  <null>
+|   XMSC_WMQ_CHANNEL                    :-  SYSTEM.DEF.SVRCONN
+|   XMSC_WMQ_CLEANUP_INTERVAL           :-  3600000
+|   XMSC_WMQ_CLEANUP_LEVEL              :-  1
+|   XMSC_WMQ_CLIENT_RECONNECT_OPTIONS   :-  0
+|   XMSC_WMQ_CLIENT_RECONNECT_TIMEOUT   :-  1800
+|   XMSC_WMQ_CLONE_SUPPORT              :-  0
+|   XMSC_WMQ_COMMAND_LEVEL              :-  910
+|   XMSC_WMQ_CONNECTION_MODE            :-  1
+|   XMSC_WMQ_CONNECTION_NAME_LIST_INT   :-  localhost(1414)
+|   XMSC_WMQ_CONNECTION_TAG             :-  [B@5a955565
+|   XMSC_WMQ_CONNECT_OPTIONS            :-  0
+|   XMSC_WMQ_HEADER_COMP                :-  [0]
+|   XMSC_WMQ_HOST_NAME                  :-  ptsgatewaymdevv.qasgx.com/10.37.253.138
+|   XMSC_WMQ_LOCAL_ADDRESS              :-  
+|   XMSC_WMQ_MAP_NAME_STYLE             :-  true
+|   XMSC_WMQ_MAX_BUFFER_SIZE            :-  1000
+|   XMSC_WMQ_MESSAGE_RETENTION          :-  1
+|   XMSC_WMQ_MESSAGE_SELECTION          :-  0
+|   XMSC_WMQ_MSG_BATCH_SIZE             :-  10
+|   XMSC_WMQ_MSG_COMP                   :-  [0]
+|   XMSC_WMQ_OPT_PUB                    :-  false
+|   XMSC_WMQ_OUTCOME_NOTIFICATION       :-  true
+|   XMSC_WMQ_POLLING_INTERVAL           :-  5000
+|   XMSC_WMQ_PORT                       :-  6502
+|   XMSC_WMQ_PROCESS_DURATION           :-  0
+|   XMSC_WMQ_PROVIDER_VERSION           :-  8.0.0.0
+|   XMSC_WMQ_PUB_ACK_INTERVAL           :-  25
+|   XMSC_WMQ_QMGR_CCSID                 :-  819
+|   XMSC_WMQ_QUEUE_MANAGER              :-  QMPTSMDEV
+|   XMSC_WMQ_RECEIVE_EXIT               :-  <null>
+|   XMSC_WMQ_RECEIVE_EXIT_INIT          :-  <null>
+|   XMSC_WMQ_RECEIVE_ISOLATION          :-  0
+|   XMSC_WMQ_REMOTE_QMGR_QSGNAME        :-  <null>
+|   XMSC_WMQ_RESCAN_INTERVAL            :-  5000
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER     :-  QMPTSMDEV
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER_ID  :-  QMPTSMDEV_2017-06-28_13.18.16                   
+|   XMSC_WMQ_SECURITY_EXIT              :-  <null>
+|   XMSC_WMQ_SECURITY_EXIT_INIT         :-  <null>
+|   XMSC_WMQ_SEND_CHECK_COUNT           :-  0
+|   XMSC_WMQ_SEND_EXIT                  :-  <null>
+|   XMSC_WMQ_SEND_EXIT_INIT             :-  <null>
+|   XMSC_WMQ_SHARE_CONV_ALLOWED         :-  1
+|   XMSC_WMQ_SPARSE_SUBSCRIPTIONS       :-  false
+|   XMSC_WMQ_SSL_CERT_STORES_COL        :-  <null>
+|   XMSC_WMQ_SSL_CERT_STORES_STR        :-  <null>
+|   XMSC_WMQ_SSL_CIPHER_SUITE           :-  <null>
+|   XMSC_WMQ_SSL_FIPS_REQUIRED          :-  false
+|   XMSC_WMQ_SSL_KEY_RESETCOUNT         :-  0
+|   XMSC_WMQ_SSL_PEER_NAME              :-  <null>
+|   XMSC_WMQ_SSL_SOCKET_FACTORY         :-  <null>
+|   XMSC_WMQ_STATUS_REFRESH_INTERVAL    :-  60000
+|   XMSC_WMQ_SUBSCRIPTION_STORE         :-  1
+|   XMSC_WMQ_SYNCPOINT_ALL_GETS         :-  false
+|   XMSC_WMQ_TARGET_CLIENT_MATCHING     :-  true
+|   XMSC_WMQ_TEMPORARY_MODEL            :-  SYSTEM.DEFAULT.MODEL.QUEUE
+|   XMSC_WMQ_TEMP_Q_PREFIX              :-  
+|   XMSC_WMQ_TEMP_TOPIC_PREFIX          :-  
+|   XMSC_WMQ_USE_CONNECTION_POOLING     :-  true
+|   brokerVersion                       :-  -1
+|   failIfQuiesce                       :-  1
+|   multicast                           :-  0
+|   version                             :-  7
+|   wildcardFormat                      :-  0
+
+Consumers        : 
+Producers        : 
+|   Instance        :-  com.ibm.msg.client.wmq.internal.WMQMessageProducer@b62fe6d
+|   Parent Session  :-  com.ibm.msg.client.wmq.internal.WMQSession@3a079870
+|   isClosed        :-  false
+|   shadow          :-  com.ibm.msg.client.wmq.internal.WMQMessageProducer$SpiIdentifiedProducerShadow@7fc2413d
+|   XMSC_ACKNOWLEDGE_MODE               :-  1
+|   XMSC_ADMIN_OBJECT_TYPE              :-  20
+|   XMSC_ASYNC_EXCEPTIONS               :-  1
+|   XMSC_CLIENT_ID                      :-  <null>
+|   XMSC_CONNECTION_TYPE                :-  1
+|   XMSC_CONNECTION_TYPE_NAME           :-  com.ibm.msg.client.wmq
+|   XMSC_DISABLE_MSG_ID                 :-  false
+|   XMSC_DISABLE_MSG_TS                 :-  false
+|   XMSC_OBJECT_IDENTITY                :-  191037037
+|   XMSC_PASSWORD                       :-  ********
+|   XMSC_PASSWORD_WAS_NULL              :-  true
+|   XMSC_RTT_DIRECT_AUTH                :-  0
+|   XMSC_RTT_PROXY_HOSTNAME             :-  <null>
+|   XMSC_RTT_PROXY_PORT                 :-  443
+|   XMSC_TRANSACTED                     :-  false
+|   XMSC_USERID                         :-  
+|   XMSC_WMQ_BROKER_CC_SUBQ             :-  SYSTEM.JMS.ND.CC.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_BROKER_CONTROLQ            :-  SYSTEM.BROKER.CONTROL.QUEUE
+|   XMSC_WMQ_BROKER_PUBQ                :-  SYSTEM.BROKER.DEFAULT.STREAM
+|   XMSC_WMQ_BROKER_QMGR                :-  
+|   XMSC_WMQ_BROKER_SUBQ                :-  SYSTEM.JMS.ND.SUBSCRIBER.QUEUE
+|   XMSC_WMQ_CAPABILITY_ADVANCED        :-  true
+|   XMSC_WMQ_CCDTURL                    :-  file:///home/centos/.mqs/AMQCLCHL.TAB_219_MDEV
+|   XMSC_WMQ_CF_DESCRIPTION             :-  <null>
+|   XMSC_WMQ_CHANNEL                    :-  SYSTEM.DEF.SVRCONN
+|   XMSC_WMQ_CLEANUP_INTERVAL           :-  3600000
+|   XMSC_WMQ_CLEANUP_LEVEL              :-  1
+|   XMSC_WMQ_CLIENT_RECONNECT_OPTIONS   :-  0
+|   XMSC_WMQ_CLIENT_RECONNECT_TIMEOUT   :-  1800
+|   XMSC_WMQ_CLONE_SUPPORT              :-  0
+|   XMSC_WMQ_COMMAND_LEVEL              :-  910
+|   XMSC_WMQ_CONNECTION_MODE            :-  1
+|   XMSC_WMQ_CONNECTION_NAME_LIST_INT   :-  localhost(1414)
+|   XMSC_WMQ_CONNECTION_TAG             :-  [B@5a955565
+|   XMSC_WMQ_CONNECT_OPTIONS            :-  0
+|   XMSC_WMQ_HEADER_COMP                :-  [0]
+|   XMSC_WMQ_HOST_NAME                  :-  ptsgatewaymdevv.qasgx.com/10.37.253.138
+|   XMSC_WMQ_LOCAL_ADDRESS              :-  
+|   XMSC_WMQ_MAP_NAME_STYLE             :-  true
+|   XMSC_WMQ_MAX_BUFFER_SIZE            :-  1000
+|   XMSC_WMQ_MESSAGE_RETENTION          :-  1
+|   XMSC_WMQ_MESSAGE_SELECTION          :-  0
+|   XMSC_WMQ_MSG_BATCH_SIZE             :-  10
+|   XMSC_WMQ_MSG_COMP                   :-  [0]
+|   XMSC_WMQ_OPT_PUB                    :-  false
+|   XMSC_WMQ_OUTCOME_NOTIFICATION       :-  true
+|   XMSC_WMQ_POLLING_INTERVAL           :-  5000
+|   XMSC_WMQ_PORT                       :-  6502
+|   XMSC_WMQ_PROCESS_DURATION           :-  0
+|   XMSC_WMQ_PROVIDER_VERSION           :-  8.0.0.0
+|   XMSC_WMQ_PUB_ACK_INTERVAL           :-  25
+|   XMSC_WMQ_QMGR_CCSID                 :-  819
+|   XMSC_WMQ_QUEUE_MANAGER              :-  QMPTSMDEV
+|   XMSC_WMQ_RECEIVE_EXIT               :-  <null>
+|   XMSC_WMQ_RECEIVE_EXIT_INIT          :-  <null>
+|   XMSC_WMQ_RECEIVE_ISOLATION          :-  0
+|   XMSC_WMQ_REMOTE_QMGR_QSGNAME        :-  <null>
+|   XMSC_WMQ_RESCAN_INTERVAL            :-  5000
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER     :-  QMPTSMDEV
+|   XMSC_WMQ_RESOLVED_QUEUE_MANAGER_ID  :-  QMPTSMDEV_2017-06-28_13.18.16                   
+|   XMSC_WMQ_SECURITY_EXIT              :-  <null>
+|   XMSC_WMQ_SECURITY_EXIT_INIT         :-  <null>
+|   XMSC_WMQ_SEND_CHECK_COUNT           :-  0
+|   XMSC_WMQ_SEND_EXIT                  :-  <null>
+|   XMSC_WMQ_SEND_EXIT_INIT             :-  <null>
+|   XMSC_WMQ_SHARE_CONV_ALLOWED         :-  1
+|   XMSC_WMQ_SPARSE_SUBSCRIPTIONS       :-  false
+|   XMSC_WMQ_SSL_CERT_STORES_COL        :-  <null>
+|   XMSC_WMQ_SSL_CERT_STORES_STR        :-  <null>
+|   XMSC_WMQ_SSL_CIPHER_SUITE           :-  <null>
+|   XMSC_WMQ_SSL_FIPS_REQUIRED          :-  false
+|   XMSC_WMQ_SSL_KEY_RESETCOUNT         :-  0
+|   XMSC_WMQ_SSL_PEER_NAME              :-  <null>
+|   XMSC_WMQ_SSL_SOCKET_FACTORY         :-  <null>
+|   XMSC_WMQ_STATUS_REFRESH_INTERVAL    :-  60000
+|   XMSC_WMQ_SUBSCRIPTION_STORE         :-  1
+|   XMSC_WMQ_SYNCPOINT_ALL_GETS         :-  false
+|   XMSC_WMQ_TARGET_CLIENT_MATCHING     :-  true
+|   XMSC_WMQ_TEMPORARY_MODEL            :-  SYSTEM.DEFAULT.MODEL.QUEUE
+|   XMSC_WMQ_TEMP_Q_PREFIX              :-  
+|   XMSC_WMQ_TEMP_TOPIC_PREFIX          :-  
+|   XMSC_WMQ_USE_CONNECTION_POOLING     :-  true
+|   brokerVersion                       :-  -1
+|   deliveryDelay                       :-  0
+|   deliveryMode                        :-  2
+|   failIfQuiesce                       :-  1
+|   multicast                           :-  0
+|   priority                            :-  4
+|   timeToLive                          :-  0
+|   version                             :-  7
+|   wildcardFormat                      :-  0
+
+
+All Thread Information
+
+                          Name : Finalizer
+                      Priority : 8
+                   ThreadGroup : java.lang.ThreadGroup[name=system,maxpri=10]
+                            ID : 3
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+                               : java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:165)
+                               : java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:216)
+
+                          Name : main
+                      Priority : 5
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 1
+                         State : RUNNABLE
+                         Stack : java.lang.Thread.dumpThreads(Thread.java:-2)
+                               : java.lang.Thread.getAllStackTraces(Thread.java:1610)
+                               : com.ibm.msg.client.commonservices.j2se.trace.DefaultTracer.generateThreadInfo(DefaultTracer.java:1442)
+                               : com.ibm.msg.client.commonservices.j2se.trace.DefaultTracer.access$1200(DefaultTracer.java:151)
+                               : com.ibm.msg.client.commonservices.j2se.trace.DefaultTracer$10.run(DefaultTracer.java:1382)
+                               : com.ibm.msg.client.commonservices.j2se.trace.DefaultTracer$10.run(DefaultTracer.java:1306)
+                               : java.security.AccessController.doPrivileged(AccessController.java:-2)
+                               : com.ibm.msg.client.commonservices.j2se.trace.DefaultTracer.ffst(DefaultTracer.java:1306)
+                               : com.ibm.msg.client.commonservices.j2se.wmqsupport.TracerImpl.ffst(TracerImpl.java:176)
+                               : com.ibm.msg.client.commonservices.trace.Trace.ffstInternal(Trace.java:1948)
+                               : com.ibm.msg.client.commonservices.trace.Trace.ffst(Trace.java:1801)
+                               : com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.processExceptionAfterOpen(JmqiOpenInterceptorImpl.java:927)
+                               : com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterOpen(JmqiOpenInterceptorImpl.java:637)
+                               : com.ibm.mq.ese.intercept.JmqiOpenInterceptorImpl.afterSpiOpen(JmqiOpenInterceptorImpl.java:214)
+                               : com.ibm.mq.ese.jmqi.InterceptedJmqiImpl.spiOpen(InterceptedJmqiImpl.java:562)
+                               : com.ibm.mq.ese.jmqi.ESEJMQI.spiOpen(ESEJMQI.java:849)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer$SpiIdentifiedProducerShadow.initialise(WMQMessageProducer.java:839)
+                               : com.ibm.msg.client.wmq.internal.WMQMessageProducer.<init>(WMQMessageProducer.java:1226)
+                               : com.ibm.msg.client.wmq.internal.WMQSession.createProducer(WMQSession.java:1134)
+                               : com.ibm.msg.client.jms.internal.JmsSessionImpl.createProducer(JmsSessionImpl.java:1479)
+                               : com.ibm.mq.jms.MQSession.createProducer(MQSession.java:661)
+                               : org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.getCachedProducer(CachingConnectionFactory.java:400)
+                               : org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.invoke(CachingConnectionFactory.java:335)
+                               : com.sun.proxy.$Proxy48.createProducer(null:-1)
+                               : org.springframework.jms.core.JmsTemplate.doCreateProducer(JmsTemplate.java:1115)
+                               : org.springframework.jms.core.JmsTemplate.createProducer(JmsTemplate.java:1096)
+                               : org.springframework.jms.core.JmsTemplate.doSend(JmsTemplate.java:602)
+                               : org.springframework.jms.core.JmsTemplate.lambda$send$3(JmsTemplate.java:586)
+                               : org.springframework.jms.core.JmsTemplate$$Lambda$336/785447854.doInJms(null:-1)
+                               : org.springframework.jms.core.JmsTemplate.execute(JmsTemplate.java:504)
+                               : org.springframework.jms.core.JmsTemplate.send(JmsTemplate.java:584)
+                               : org.springframework.jms.core.JmsTemplate.convertAndSend(JmsTemplate.java:661)
+                               : top.didasoft.core.ibm.mq.MQApplication.run(MQApplication.java:48)
+                               : org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:804)
+                               : org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:788)
+                               : org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+                               : org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+                               : org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+                               : top.didasoft.core.ibm.mq.MQApplication.main(MQApplication.java:32)
+                               : sun.reflect.NativeMethodAccessorImpl.invoke0(NativeMethodAccessorImpl.java:-2)
+                               : sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+                               : sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+                               : java.lang.reflect.Method.invoke(Method.java:498)
+                               : org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+                               : org.springframework.boot.loader.Launcher.launch(Launcher.java:107)
+                               : org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+                               : org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:88)
+
+                          Name : RcvThread: com.ibm.mq.jmqi.remote.impl.RemoteTCPConnection@1940722725[qmid=QMPTSMDEV_2017-06-28_13.18.16,fap=13,channel=PTSMQ219.SVRCONN    ,ccsid=1208,sharecnv=10,hbint=300,peer=ptsgatewaymdevv.qasgx.com/10.37.253.138(6502),localport=39250,ssl=no]
+                      Priority : 5
+                   ThreadGroup : java.lang.ThreadGroup[name=JMSCCThreadPool,maxpri=10]
+                            ID : 13
+                         State : RUNNABLE
+                         Stack : java.net.SocketInputStream.socketRead0(SocketInputStream.java:-2)
+                               : java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+                               : java.net.SocketInputStream.read(SocketInputStream.java:171)
+                               : java.net.SocketInputStream.read(SocketInputStream.java:141)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteTCPConnection.receive(RemoteTCPConnection.java:1914)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteRcvThread.receiveBuffer(RemoteRcvThread.java:773)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteRcvThread.receiveOneTSH(RemoteRcvThread.java:739)
+                               : com.ibm.mq.jmqi.remote.impl.RemoteRcvThread.run(RemoteRcvThread.java:156)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.runTask(WorkQueueItem.java:319)
+                               : com.ibm.msg.client.commonservices.workqueue.SimpleWorkQueueItem.runItem(SimpleWorkQueueItem.java:99)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueItem.run(WorkQueueItem.java:343)
+                               : com.ibm.msg.client.commonservices.workqueue.WorkQueueManager.runWorkQueueItem(WorkQueueManager.java:312)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$ThreadPoolWorker.run(WorkQueueManagerImplementation.java:1227)
+
+                          Name : Signal Dispatcher
+                      Priority : 9
+                   ThreadGroup : java.lang.ThreadGroup[name=system,maxpri=10]
+                            ID : 4
+                         State : RUNNABLE
+
+                          Name : JMSCCThreadPoolMaster
+                      Priority : 5
+                   ThreadGroup : java.lang.ThreadGroup[name=main,maxpri=10]
+                            ID : 12
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:502)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$WorkQueueManagerThread.waitForNotification(WorkQueueManagerImplementation.java:672)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$WorkQueueManagerThread.waitForNotification(WorkQueueManagerImplementation.java:641)
+                               : com.ibm.msg.client.commonservices.j2se.workqueue.WorkQueueManagerImplementation$WorkQueueManagerThread.run(WorkQueueManagerImplementation.java:908)
+
+                          Name : Reference Handler
+                      Priority : 10
+                   ThreadGroup : java.lang.ThreadGroup[name=system,maxpri=10]
+                            ID : 2
+                         State : WAITING
+                         Stack : java.lang.Object.wait(Object.java:-2)
+                               : java.lang.Object.wait(Object.java:502)
+                               : java.lang.ref.Reference.tryHandlePending(Reference.java:191)
+                               : java.lang.ref.Reference$ReferenceHandler.run(Reference.java:153)
+
+First Failure Symptom Report completed at Thu Mar 04 08:50:46 UTC 2021
+------------------------------------END FFST------------------------------------
