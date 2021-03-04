@@ -13,6 +13,7 @@ import org.springframework.jms.core.JmsTemplate;
 
 import javax.jms.Connection;
 import javax.jms.Session;
+import java.util.Date;
 
 @SpringBootApplication
 @EnableJms
@@ -33,10 +34,17 @@ public class MQApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        MQConnectionFactory mqConnectionFactory = (MQConnectionFactory) ((CachingConnectionFactory)jmsTemplate.getConnectionFactory()).getTargetConnectionFactory();
-        log.info(mqConnectionFactory.toString());
-        //log.info(mqConnectionFactory.getHostName());
-        Connection connection = mqConnectionFactory.createConnection();
-        Session session = connection.createSession();
+//        MQConnectionFactory mqConnectionFactory = (MQConnectionFactory) ((CachingConnectionFactory)jmsTemplate.getConnectionFactory()).getTargetConnectionFactory();
+//        log.info(mqConnectionFactory.toString());
+//        //log.info(mqConnectionFactory.getHostName());
+//        Connection connection = mqConnectionFactory.createConnection();
+//        Session session = connection.createSession();
+
+        // Send a single message with a timestamp
+        String msg = "Hello from IBM MQ at " + new Date();
+
+        // The default SimpleMessageConverter class will be called and turn a String
+        // into a JMS TextMessage
+        jmsTemplate.convertAndSend("TEST", msg);
     }
 }
