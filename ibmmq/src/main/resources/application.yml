@@ -1,0 +1,14 @@
+ibm:
+  mq:
+    queueManager: QMPTSMDEV
+    user:
+    ccdtUrl: file:///Users/jerrywang/self/mycode/ng-gateway/ibmmq/src/main/resources/AMQCLCHL.TAB_219_MDEV
+
+#ibm.mq.channel=SYSTEM.DEF.SVRCONN
+#ibm.mq.connName=localhost(1414)
+
+# Change the following lines as necessary. Set the ibm.mq.user
+# property to an empty string to send no authentication request.
+#ibm.mq.user=mqguest
+# ibm.mq.user=
+#ibm.mq.password=passw0rd
