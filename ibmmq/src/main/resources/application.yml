@@ -4,6 +4,10 @@ ibm:
     user:
     ccdtUrl: file:///Users/jerrywang/self/mycode/ng-gateway/ibmmq/src/main/resources/AMQCLCHL.TAB_219_MDEV
 
+logging:
+  level:
+    com.ibm.mq.spring.boot: TRACE
+
 #ibm.mq.channel=SYSTEM.DEF.SVRCONN
 #ibm.mq.connName=localhost(1414)
 

@@ -12,8 +12,9 @@
 		<module>library</module>
 		<module>gateway-app</module>
 		<module>ibmmq</module>
+        <module>ssl-server</module>
 
-	</modules>
+    </modules>
 	<name>Spring Main Project</name>
 	<description>Main project using Spring Boot</description>
 
