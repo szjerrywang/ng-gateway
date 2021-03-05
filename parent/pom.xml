@@ -22,7 +22,11 @@
 
     <dependencyManagement>
         <dependencies>
-
+            <dependency>
+                <groupId>org.kgusarov</groupId>
+                <artifactId>spring-boot-netty</artifactId>
+                <version>2.1.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

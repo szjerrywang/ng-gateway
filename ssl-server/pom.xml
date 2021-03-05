@@ -17,5 +17,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.kgusarov</groupId>
+            <artifactId>spring-boot-netty</artifactId>
+
+        </dependency>
     </dependencies>
 </project>
