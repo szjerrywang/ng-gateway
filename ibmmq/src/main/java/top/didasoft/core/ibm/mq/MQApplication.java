@@ -45,6 +45,7 @@ public class MQApplication implements CommandLineRunner {
 
         // The default SimpleMessageConverter class will be called and turn a String
         // into a JMS TextMessage
+        log.info("Sending msg: {}", msg);
         jmsTemplate.convertAndSend("PTSMQ219.DATA.IN", msg);
     }
 }
