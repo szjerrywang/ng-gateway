@@ -2,15 +2,19 @@ package top.didasoft.core.ssl.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslContextBuilder;
+import io.netty.handler.ssl.util.SelfSignedCertificate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import top.didasoft.core.ssl.server.handler.DiscardServerHandler;
+
+
+import javax.net.ssl.SSLException;
+import java.security.cert.CertificateException;
 
 /**
  * Discards any incoming data.
@@ -20,28 +24,43 @@ public class DiscardServer implements Runnable {
     private static final Logger log = LoggerFactory.getLogger(DiscardServer.class);
 
     private int port;
+    private boolean ssl;
 
     private ChannelFuture f;
     private EventLoopGroup bossGroup;
     private EventLoopGroup workerGroup;
 
-    public DiscardServer(int port) {
+    public DiscardServer(int port, boolean ssl) {
         this.port = port;
+        this.ssl = ssl;
     }
     
     public void run()  {
+        SelfSignedCertificate ssc = null;
+        SslContext sslCtx = null;
+        if (ssl) {
+            try {
+                ssc = new SelfSignedCertificate();
+            } catch (CertificateException e) {
+                log.error("Certificate exception", e);
+                return;
+            }
+
+            try {
+                sslCtx = SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey())
+                        .build();
+            } catch (SSLException e) {
+                log.error("Certificate exception", e);
+                return;
+            }
+        }
         bossGroup = new NioEventLoopGroup(); // (1)
         workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap(); // (2)
             b.group(bossGroup, workerGroup)
              .channel(NioServerSocketChannel.class) // (3)
-             .childHandler(new ChannelInitializer<SocketChannel>() { // (4)
-                 @Override
-                 public void initChannel(SocketChannel ch) throws Exception {
-                     ch.pipeline().addLast(new DiscardServerHandler());
-                 }
-             })
+             .childHandler(new DiscardServerInitializer(sslCtx))
              .option(ChannelOption.SO_BACKLOG, 128)          // (5)
              .childOption(ChannelOption.SO_KEEPALIVE, true); // (6)
     

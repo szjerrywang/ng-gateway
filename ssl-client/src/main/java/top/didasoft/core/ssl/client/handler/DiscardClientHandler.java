@@ -29,6 +29,11 @@ public class DiscardClientHandler extends ChannelInboundHandlerAdapter { // (1)
 
             log.info("remote connected: {}:{}", inetSocketAddress.getAddress().toString(), inetSocketAddress.getPort());
         }
+
+        ByteBuf byteBuf = ctx.alloc().buffer();
+        ByteBufUtil.writeUtf8(byteBuf, "Hello server\n");
+        ctx.channel().writeAndFlush(byteBuf);
+        //ctx.channel().flush();
     }
 
 

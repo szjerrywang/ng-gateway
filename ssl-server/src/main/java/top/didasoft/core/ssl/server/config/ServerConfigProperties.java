@@ -9,6 +9,7 @@ public class ServerConfigProperties {
     
     private String hostName;
     private int port;
+    private boolean ssl;
 
     public int getPort() {
         return port;
@@ -25,4 +26,13 @@ public class ServerConfigProperties {
     public void setPort(int port) {
         this.port = port;
     }
+
+    public boolean isSsl() {
+        return ssl;
+    }
+
+    public void setSsl(boolean ssl) {
+        this.ssl = ssl;
+    }
+
 }

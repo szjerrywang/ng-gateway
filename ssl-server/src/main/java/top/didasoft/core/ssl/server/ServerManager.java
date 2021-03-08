@@ -28,7 +28,7 @@ public class ServerManager {
             discardServer.shutdown();
         }
 
-        discardServer = new DiscardServer(serverConfigProperties.getPort());
+        discardServer = new DiscardServer(serverConfigProperties.getPort(), serverConfigProperties.isSsl());
 
         SimpleAsyncTaskExecutor simpleAsyncTaskExecutor = new SimpleAsyncTaskExecutor("Server Run");
 
