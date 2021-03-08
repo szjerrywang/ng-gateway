@@ -13,6 +13,7 @@
 		<module>gateway-app</module>
 		<module>ibmmq</module>
         <module>ssl-server</module>
+        <module>ssl-client</module>
 
     </modules>
 	<name>Spring Main Project</name>

@@ -27,6 +27,11 @@
                 <artifactId>spring-boot-netty</artifactId>
                 <version>2.1.0</version>
             </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.1.59.Final</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

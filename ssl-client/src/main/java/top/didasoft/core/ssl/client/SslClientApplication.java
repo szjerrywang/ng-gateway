@@ -1,15 +1,12 @@
-package top.didasoft.core.ssl.server;
+package top.didasoft.core.ssl.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SslServerApplication {
+public class SslClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SslServerApplication.class, args);
+        SpringApplication.run(SslClientApplication.class, args);
     }
-
 }
-
-
