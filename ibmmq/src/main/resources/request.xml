@@ -15,6 +15,7 @@
         </Message>
     </Header>
     <Body><![CDATA[
+<FIXML>
 <PtyDetlDefReq ReqID="00001">
     <Hdr MsgTyp="CX" ApplVerID="FIX 5.0SP2" SID="219" TID="SGXPTS" SeqNum="1000" Snt="2021-03-10 10:12:13"/>
     <PtyDetlUpd ListUpdActn="A">
@@ -49,5 +50,6 @@
         </PtyDetl>
     </PtyDetlUpd>
 </PtyDetlDefReq>
+</FIXML>
  ]]></Body>
 </Wrapper>
