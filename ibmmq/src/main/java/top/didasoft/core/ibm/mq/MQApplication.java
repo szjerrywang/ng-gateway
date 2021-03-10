@@ -67,7 +67,7 @@ public class MQApplication implements CommandLineRunner {
             public Message createMessage(Session session) throws JMSException {
                 Message message = session.createTextMessage(msg);
 //                Message message = session.createMessage();
-                message.setJMSCorrelationID("819278696639627284");
+                message.setJMSCorrelationID("819278696639627285");
 //                message.set
 
                 return message;
