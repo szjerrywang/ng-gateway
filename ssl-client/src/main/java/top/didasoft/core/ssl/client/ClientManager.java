@@ -32,7 +32,9 @@ public class ClientManager {
         discardClient = new DiscardClient(
                 clientConfigProperties.getHostName(),
                 clientConfigProperties.getPort(),
-                clientConfigProperties.getTimeoutms());
+                clientConfigProperties.getTimeoutms(),
+                clientConfigProperties.isSsl(),
+                this.clientConfigProperties);
 
         SimpleAsyncTaskExecutor simpleAsyncTaskExecutor = new SimpleAsyncTaskExecutor("Client Run");
 

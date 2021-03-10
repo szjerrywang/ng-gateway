@@ -8,9 +8,15 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslContextBuilder;
+import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import top.didasoft.core.ssl.client.config.ClientConfigProperties;
 import top.didasoft.core.ssl.client.handler.DiscardClientHandler;
+
+import javax.net.ssl.SSLException;
 
 public class DiscardClient implements Runnable {
 
@@ -19,23 +25,31 @@ public class DiscardClient implements Runnable {
     private String host;
     private int port;
     private long timeoutms;
+    private boolean ssl;
+    private ClientConfigProperties clientConfigProperties;
     private EventLoopGroup workerGroup;
     ChannelFuture f;
 
-    public DiscardClient(String host, int port, long timeoutms) {
+    public DiscardClient(String host, int port, long timeoutms, boolean ssl, ClientConfigProperties clientConfigProperties) {
         this.host = host;
         this.port = port;
         this.timeoutms = timeoutms;
-    }
-
-    public static void main(String[] args) throws Exception {
-        String host = args[0];
-        int port = Integer.parseInt(args[1]);
-
+        this.ssl = ssl;
+        this.clientConfigProperties = clientConfigProperties;
     }
 
     @Override
     public void run() {
+        SslContext sslCtx = null;
+        if (ssl) {
+            try {
+                sslCtx = SslContextBuilder.forClient()
+                        .trustManager(InsecureTrustManagerFactory.INSTANCE).build();
+            } catch (SSLException e) {
+                log.error("Ssl context exception", e);
+                return;
+            }
+        }
         workerGroup = new NioEventLoopGroup();
 
         try {
@@ -43,12 +57,13 @@ public class DiscardClient implements Runnable {
             b.group(workerGroup); // (2)
             b.channel(NioSocketChannel.class); // (3)
             b.option(ChannelOption.SO_KEEPALIVE, true); // (4)
-            b.handler(new ChannelInitializer<SocketChannel>() {
-                @Override
-                public void initChannel(SocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(new DiscardClientHandler());
-                }
-            });
+            b.handler(new DiscardClientInitializer(sslCtx, clientConfigProperties));
+//            b.handler(new ChannelInitializer<SocketChannel>() {
+//                @Override
+//                public void initChannel(SocketChannel ch) throws Exception {
+//                    ch.pipeline().addLast(new DiscardClientHandler());
+//                }
+//            });
 
             // Start the client.
             f = b.connect(host, port);

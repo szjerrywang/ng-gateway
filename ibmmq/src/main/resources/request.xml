@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Wrapper xmlns="sgx:npts:openapi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Header>
+        <Message>
+            <SenderReference>819278696639627284</SenderReference>
+            <MessageIdentifier>PtyDetlDefReq</MessageIdentifier>
+            <Format>AnyXML</Format>
+            <Sender>
+                <OpenAPIID>219</OpenAPIID>
+            </Sender>
+            <Receiver>
+                <OpenAPIID>SGXPTS</OpenAPIID>
+            </Receiver>
+            <FlowType>Request</FlowType>
+        </Message>
+    </Header>
+    <Body><![CDATA[
+<PtyDetlDefReq ReqID="00001">
+    <Hdr MsgTyp="CX" ApplVerID="FIX 5.0SP2" SID="219" TID="SGXPTS" SeqNum="1000" Snt="2021-03-10 10:12:13"/>
+    <PtyDetlUpd ListUpdActn="A">
+        <PtyDetl ID="9876541" R="38">
+            <Sub ID="C" Typ="26"/>
+            <Sub ID="L" Typ="220"/>
+            <Sub ID="Nicholas Chen" Typ="235"/>
+            <Sub ID="151" Typ="203"/>
+            <Sub ID="Alexander Wang" Typ="204"/>
+            <Sub ID="1" Typ="222"/>
+            <Sub ID="1" Typ="41"/>
+            <Sub ID="1" Typ="223"/>
+            <ReltdPtyDetl ID="260" R="1"/>
+            <ReltdPtyDetl ID="S8377995G" R="3">
+                <Sub ID="Nicholas Chen" Typ="5"/>
+                <Sub ID="1" Typ="205"/>
+                <Sub ID="SG" Typ="232"/>
+                <Sub ID="SG" Typ="222"/>
+                <Sub ID="Dummy Co" Typ="228"/>
+                <Sub ID="1" Typ="230"/>
+                <Sub ID="Banker" Typ="52"/>
+                <Sub ID="1" Typ="238"/>
+                <Sub ID="Singapore Bank" Typ="206"/>
+                <Sub ID="28 Shenton Way" Typ="213"/>
+                <Sub ID="#56-59" Typ="214"/>
+                <Sub ID="SB Center" Typ="215"/>
+                <Sub ID="Raffles Place" Typ="234"/>
+                <Sub ID="068805" Typ="216"/>
+                <Sub ID="SG" Typ="217"/>
+                <Sub ID="SG" Typ="218"/>
+            </ReltdPtyDetl>
+        </PtyDetl>
+    </PtyDetlUpd>
+</PtyDetlDefReq>
+ ]]></Body>
+</Wrapper>

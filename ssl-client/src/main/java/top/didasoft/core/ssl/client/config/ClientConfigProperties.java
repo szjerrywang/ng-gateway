@@ -9,6 +9,7 @@ public class ClientConfigProperties {
     
     private String hostName;
     private int port;
+    private boolean ssl;
     private long timeoutms;
 
     public int getPort() {
@@ -35,5 +36,11 @@ public class ClientConfigProperties {
         this.timeoutms = timeoutms;
     }
 
+    public boolean isSsl() {
+        return ssl;
+    }
 
+    public void setSsl(boolean ssl) {
+        this.ssl = ssl;
+    }
 }

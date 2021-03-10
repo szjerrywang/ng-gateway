@@ -7,4 +7,4 @@ netty:
 dida:
   server:
     port: 40000
-    ssl: false
+    ssl: true

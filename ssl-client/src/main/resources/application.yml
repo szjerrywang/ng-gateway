@@ -9,3 +9,4 @@ dida:
     port: 40000
     hostname: localhost
     timeoutms: 5000
+    ssl: true
