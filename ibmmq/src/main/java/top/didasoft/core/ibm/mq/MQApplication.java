@@ -1,6 +1,8 @@
 package top.didasoft.core.ibm.mq;
 
 import com.ibm.mq.jms.MQConnectionFactory;
+import com.ibm.mq.jms.MQQueue;
+import com.ibm.msg.client.wmq.WMQConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,10 @@ public class MQApplication implements CommandLineRunner {
 //        Connection connection = mqConnectionFactory.createConnection();
 //        Session session = connection.createSession();
 
+        log.info("Transport type: {}", connectionFactory.getTransportType());
+        //log.info("JMS", connectionFactory.getPr)
+        //connectionFactory.setTransportType(WMQConstants.WMQ_CM_CLIENT);
+        connectionFactory.setIntProperty(WMQConstants.JMS_IBM_FORMAT, WMQConstants.);
         InputStream inputStream = MQApplication.class.getClassLoader().getResourceAsStream("request.xml");
         String text = new BufferedReader(
                 new InputStreamReader(inputStream, StandardCharsets.UTF_8))
@@ -61,7 +67,12 @@ public class MQApplication implements CommandLineRunner {
 
         Session session = connectionFactory.createConnection().createSession(false, Session.AUTO_ACKNOWLEDGE);
         Queue queue = session.createQueue("PTSMQ219.DATA.IN");
-        MessageProducer producer = session.createProducer(queue);
+
+        MQQueue mqQueue = (MQQueue) queue;
+        mqQueue.setMessageBodyStyle(WMQConstants.WMQ_MESSAGE_BODY_MQ);
+
+
+        MessageProducer producer = session.createProducer(mqQueue);
         Message message = session.createTextMessage(msg);
 //                Message message = session.createMessage();
         message.setJMSCorrelationID(correlationID);
