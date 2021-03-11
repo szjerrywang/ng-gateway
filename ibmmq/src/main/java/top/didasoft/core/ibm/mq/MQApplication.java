@@ -12,10 +12,7 @@ import org.springframework.jms.connection.CachingConnectionFactory;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
-import javax.jms.Connection;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.Session;
+import javax.jms.*;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -29,8 +26,8 @@ public class MQApplication implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(MQApplication.class);
 
-    @Autowired
-    JmsTemplate jmsTemplate;
+//    @Autowired
+//    JmsTemplate jmsTemplate;
 
     @Autowired
     MQConnectionFactory connectionFactory;
@@ -57,23 +54,33 @@ public class MQApplication implements CommandLineRunner {
         String msg = text;
         // Send a single message with a timestamp
         //String msg = "Hello from IBM MQ at " + new Date();
-
+        String correlationID = RandomString.make();
         // The default SimpleMessageConverter class will be called and turn a String
         // into a JMS TextMessage
-        log.info("Sending msg: {}", msg);
+        log.info("Sending msg: {} with correlation id {}", msg, correlationID);
 
-        jmsTemplate.send("PTSMQ219.DATA.IN", new MessageCreator() {
-            @Override
-            public Message createMessage(Session session) throws JMSException {
-                Message message = session.createTextMessage(msg);
+        Session session = connectionFactory.createConnection().createSession(false, Session.AUTO_ACKNOWLEDGE);
+        Queue queue = session.createQueue("PTSMQ219.DATA.IN");
+        MessageProducer producer = session.createProducer(queue);
+        Message message = session.createTextMessage(msg);
 //                Message message = session.createMessage();
-                message.setJMSCorrelationID("819278696634");
-                log.info(message.getClass().toString());
-//                message.set
+        message.setJMSCorrelationID(correlationID);
+        log.info(message.getClass().toString());
+        producer.send(message);
 
-                return message;
-            }
-        });
+        //"PTSMQ219.DATA.IN");
+//        jmsTemplate.send("PTSMQ219.DATA.IN", new MessageCreator() {
+//            @Override
+//            public Message createMessage(Session session) throws JMSException {
+//                Message message = session.createTextMessage(msg);
+////                Message message = session.createMessage();
+//                message.setJMSCorrelationID(correlationID);
+//                log.info(message.getClass().toString());
+////                message.set
+//
+//                return message;
+//            }
+//        });
 
         //jmsTemplate.convertAndSend("PTSMQ219.DATA.IN", msg);
     }
