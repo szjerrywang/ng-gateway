@@ -1,8 +1,15 @@
 ibm:
   mq:
+    pool:
+      enabled: false
     queueManager: QMPTSMDEV
     user:
     ccdtUrl: file:///Users/jerrywang/self/mycode/ng-gateway/ibmmq/src/main/resources/AMQCLCHL.TAB_219_MDEV
+
+spring:
+  jms:
+    cache:
+      enabled: false
 
 logging:
   level:

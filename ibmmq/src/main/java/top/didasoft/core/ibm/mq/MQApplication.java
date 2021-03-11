@@ -32,8 +32,8 @@ public class MQApplication implements CommandLineRunner {
     @Autowired
     JmsTemplate jmsTemplate;
 
-//    @Autowired
-//    MQConnectionFactory connectionFactory;
+    @Autowired
+    MQConnectionFactory connectionFactory;
 
     public static final void main(String[] args)
     {
@@ -67,7 +67,8 @@ public class MQApplication implements CommandLineRunner {
             public Message createMessage(Session session) throws JMSException {
                 Message message = session.createTextMessage(msg);
 //                Message message = session.createMessage();
-                message.setJMSCorrelationID("819278696639627285");
+                message.setJMSCorrelationID("819278696634");
+                log.info(message.getClass().toString());
 //                message.set
 
                 return message;
