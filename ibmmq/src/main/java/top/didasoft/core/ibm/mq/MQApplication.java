@@ -20,6 +20,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @SpringBootApplication
@@ -58,11 +60,19 @@ public class MQApplication implements CommandLineRunner {
         .lines()
                 .collect(Collectors.joining("\n"));
 
-        String msg = text;
+
+
+        //String msg = text;
         // Send a single message with a timestamp
         //String msg = "Hello from IBM MQ at " + new Date();
         //"20210309771";//
-        String correlationID = "O6Ws46D1";//RandomString.make();
+        String correlationID = RandomString.make();
+
+        Pattern p = Pattern.compile("O6Ws46D1", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(text);
+
+        String msg = m.replaceFirst(correlationID);
+
         // The default SimpleMessageConverter class will be called and turn a String
         // into a JMS TextMessage
         log.info("Sending msg: {} with correlation id {}", msg, correlationID);
