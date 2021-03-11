@@ -1,7 +1,7 @@
 <Wrapper xmlns="sgx:npts:openapi" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
   <Header>
     <Message>
-      <SenderReference>20210309771</SenderReference>
+      <SenderReference>O6Ws46D1</SenderReference>
       <MessageIdentifier>PtyDetlDefReq</MessageIdentifier>
       <Format>AnyXML</Format>
       <Sender>
