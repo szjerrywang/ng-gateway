@@ -61,7 +61,8 @@ public class MQApplication implements CommandLineRunner {
         String msg = text;
         // Send a single message with a timestamp
         //String msg = "Hello from IBM MQ at " + new Date();
-        String correlationID = "2021030977376656";//RandomString.make();
+        //"20210309771";//
+        String correlationID = RandomString.make();
         // The default SimpleMessageConverter class will be called and turn a String
         // into a JMS TextMessage
         log.info("Sending msg: {} with correlation id {}", msg, correlationID);
