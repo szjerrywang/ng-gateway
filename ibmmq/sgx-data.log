@@ -1,0 +1,204 @@
+2021-03-09 13:20:52,055 INFO  [main] c.a.c.s.SGXGatewayApplication:50 Starting SGXGatewayApplication v1.0-SNAPSHOT on ip-10-37-244-150.ap-southeast-1.compute.internal with PID 19611 (/home/centos/src/sgx/sgx-gateway/target/sgx-gateway.jar started by centos in /home/centos/tiger/ng-gateway/ibmmq)
+2021-03-09 13:20:52,059 INFO  [main] c.a.c.s.SGXGatewayApplication:679 The following profiles are active: sgxgatewaydev
+2021-03-09 13:20:54,478 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate:244 Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-09 13:20:54,483 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate:126 Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-03-09 13:20:54,548 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate:182 Finished Spring Data repository scanning in 42ms. Found 0 repository interfaces.
+2021-03-09 13:20:55,222 INFO  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$690351c7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-09 13:20:55,304 INFO  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 Bean 'redisProperties' of type [com.alphaliongroup.pt.redis.config.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-09 13:20:55,316 INFO  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 Bean 'redisConfiguration' of type [com.alphaliongroup.pt.redis.config.RedisConfiguration$$EnhancerBySpringCGLIB$$a801b86f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-09 13:20:56,185 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer:90 Tomcat initialized with port(s): 9081 (http)
+2021-03-09 13:20:56,240 INFO  [main] o.a.catalina.core.StandardService:173 Starting service [Tomcat]
+2021-03-09 13:20:56,240 INFO  [main] o.a.catalina.core.StandardEngine:173 Starting Servlet engine: [Apache Tomcat/9.0.17]
+2021-03-09 13:20:56,432 INFO  [main] o.a.c.c.C.[.[localhost].[/api]:173 Initializing Spring embedded WebApplicationContext
+2021-03-09 13:20:56,432 INFO  [main] o.s.web.context.ContextLoader:296 Root WebApplicationContext: initialization completed in 4263 ms
+2021-03-09 13:20:58,590 WARN  [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext:557 Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sgxMessageServiceImpl': Unsatisfied dependency expressed through field 'messageResponseProducer'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jmsResponseProducer' defined in class path resource [com/alphaliongroup/core/sgxgateway/config/JmsConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.jms.MessageProducer]: Factory method 'jmsResponseProducer' threw exception; nested exception is com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2008: Failed to open MQ queue 'PTSMQ219.DATA.OUT'.
+JMS attempted to perform an MQOPEN, but IBM MQ reported an error.
+Use the linked exception to determine the cause of this error. Check that the specified queue and queue manager are defined correctly.
+2021-03-09 13:20:58,617 INFO  [main] o.a.catalina.core.StandardService:173 Stopping service [Tomcat]
+2021-03-09 13:20:58,662 INFO  [main] o.s.b.a.l.ConditionEvaluationReportLoggingListener:142 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-03-09 13:20:58,668 ERROR [main] o.s.boot.SpringApplication:858 Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sgxMessageServiceImpl': Unsatisfied dependency expressed through field 'messageResponseProducer'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jmsResponseProducer' defined in class path resource [com/alphaliongroup/core/sgxgateway/config/JmsConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.jms.MessageProducer]: Factory method 'jmsResponseProducer' threw exception; nested exception is com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2008: Failed to open MQ queue 'PTSMQ219.DATA.OUT'.
+JMS attempted to perform an MQOPEN, but IBM MQ reported an error.
+Use the linked exception to determine the cause of this error. Check that the specified queue and queue manager are defined correctly.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1411)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:592)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:849)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:877)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.alphaliongroup.core.sgxgateway.SGXGatewayApplication.main(SGXGatewayApplication.java:25)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:50)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:51)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jmsResponseProducer' defined in class path resource [com/alphaliongroup/core/sgxgateway/config/JmsConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.jms.MessageProducer]: Factory method 'jmsResponseProducer' threw exception; nested exception is com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2008: Failed to open MQ queue 'PTSMQ219.DATA.OUT'.
+JMS attempted to perform an MQOPEN, but IBM MQ reported an error.
+Use the linked exception to determine the cause of this error. Check that the specified queue and queue manager are defined correctly.
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:627)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1321)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:277)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1167)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593)
+	... 27 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.jms.MessageProducer]: Factory method 'jmsResponseProducer' threw exception; nested exception is com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2008: Failed to open MQ queue 'PTSMQ219.DATA.OUT'.
+JMS attempted to perform an MQOPEN, but IBM MQ reported an error.
+Use the linked exception to determine the cause of this error. Check that the specified queue and queue manager are defined correctly.
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:622)
+	... 40 common frames omitted
+Caused by: com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2008: Failed to open MQ queue 'PTSMQ219.DATA.OUT'.
+	at com.ibm.msg.client.wmq.common.internal.Reason.reasonToException(Reason.java:531)
+	at com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:215)
+	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.checkJmqiCallSuccess(WMQMessageProducer.java:1263)
+	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.checkJmqiCallSuccess(WMQMessageProducer.java:1220)
+	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.access$800(WMQMessageProducer.java:75)
+	at com.ibm.msg.client.wmq.internal.WMQMessageProducer$SpiIdentifiedProducerShadow.initialise(WMQMessageProducer.java:816)
+	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.<init>(WMQMessageProducer.java:1196)
+	at com.ibm.msg.client.wmq.internal.WMQSession.createProducer(WMQSession.java:1127)
+	at com.ibm.msg.client.jms.internal.JmsSessionImpl.createProducer(JmsSessionImpl.java:1504)
+	at com.ibm.mq.jms.MQSession.createProducer(MQSession.java:661)
+	at com.alphaliongroup.core.sgxgateway.config.JmsConfig.jmsResponseProducer(JmsConfig.java:170)
+	at com.alphaliongroup.core.sgxgateway.config.JmsConfig$$EnhancerBySpringCGLIB$$a75a814a.CGLIB$jmsResponseProducer$1(<generated>)
+	at com.alphaliongroup.core.sgxgateway.config.JmsConfig$$EnhancerBySpringCGLIB$$a75a814a$$FastClassBySpringCGLIB$$d2a59580.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363)
+	at com.alphaliongroup.core.sgxgateway.config.JmsConfig$$EnhancerBySpringCGLIB$$a75a814a.jmsResponseProducer(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 41 common frames omitted
+Caused by: com.ibm.mq.MQException: JMSCMQ0001: IBM MQ call failed with compcode '2' ('MQCC_FAILED') reason '2035' ('MQRC_NOT_AUTHORIZED').
+	at com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:203)
+	... 60 common frames omitted
+2021-03-09 13:21:49,996 INFO  [main] c.a.c.s.SGXGatewayApplication:50 Starting SGXGatewayApplication v1.0-SNAPSHOT on ip-10-37-244-150.ap-southeast-1.compute.internal with PID 19690 (/home/centos/src/sgx/sgx-gateway/target/sgx-gateway.jar started by centos in /home/centos/tiger/ng-gateway/ibmmq)
+2021-03-09 13:21:50,000 INFO  [main] c.a.c.s.SGXGatewayApplication:679 The following profiles are active: sgxgatewaydev
+2021-03-09 13:21:52,393 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate:244 Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-09 13:21:52,398 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate:126 Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-03-09 13:21:52,496 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate:182 Finished Spring Data repository scanning in 56ms. Found 0 repository interfaces.
+2021-03-09 13:21:53,203 INFO  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$1219f56d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-09 13:21:53,243 INFO  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 Bean 'redisProperties' of type [com.alphaliongroup.pt.redis.config.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-09 13:21:53,254 INFO  [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330 Bean 'redisConfiguration' of type [com.alphaliongroup.pt.redis.config.RedisConfiguration$$EnhancerBySpringCGLIB$$51185c15] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-03-09 13:21:54,080 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer:90 Tomcat initialized with port(s): 9081 (http)
+2021-03-09 13:21:54,154 INFO  [main] o.a.catalina.core.StandardService:173 Starting service [Tomcat]
+2021-03-09 13:21:54,155 INFO  [main] o.a.catalina.core.StandardEngine:173 Starting Servlet engine: [Apache Tomcat/9.0.17]
+2021-03-09 13:21:54,385 INFO  [main] o.a.c.c.C.[.[localhost].[/api]:173 Initializing Spring embedded WebApplicationContext
+2021-03-09 13:21:54,386 INFO  [main] o.s.web.context.ContextLoader:296 Root WebApplicationContext: initialization completed in 4188 ms
+2021-03-09 13:21:56,200 WARN  [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext:557 Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sgxMessageServiceImpl': Unsatisfied dependency expressed through field 'messageResponseProducer'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jmsResponseProducer' defined in class path resource [com/alphaliongroup/core/sgxgateway/config/JmsConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.jms.MessageProducer]: Factory method 'jmsResponseProducer' threw exception; nested exception is com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2008: Failed to open MQ queue 'PTSMQ219.DATA.OUT'.
+JMS attempted to perform an MQOPEN, but IBM MQ reported an error.
+Use the linked exception to determine the cause of this error. Check that the specified queue and queue manager are defined correctly.
+2021-03-09 13:21:56,226 INFO  [main] o.a.catalina.core.StandardService:173 Stopping service [Tomcat]
+2021-03-09 13:21:56,268 INFO  [main] o.s.b.a.l.ConditionEvaluationReportLoggingListener:142 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-03-09 13:21:56,274 ERROR [main] o.s.boot.SpringApplication:858 Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sgxMessageServiceImpl': Unsatisfied dependency expressed through field 'messageResponseProducer'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jmsResponseProducer' defined in class path resource [com/alphaliongroup/core/sgxgateway/config/JmsConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.jms.MessageProducer]: Factory method 'jmsResponseProducer' threw exception; nested exception is com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2008: Failed to open MQ queue 'PTSMQ219.DATA.OUT'.
+JMS attempted to perform an MQOPEN, but IBM MQ reported an error.
+Use the linked exception to determine the cause of this error. Check that the specified queue and queue manager are defined correctly.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1411)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:592)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:849)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:877)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.alphaliongroup.core.sgxgateway.SGXGatewayApplication.main(SGXGatewayApplication.java:25)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:50)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:51)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jmsResponseProducer' defined in class path resource [com/alphaliongroup/core/sgxgateway/config/JmsConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.jms.MessageProducer]: Factory method 'jmsResponseProducer' threw exception; nested exception is com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2008: Failed to open MQ queue 'PTSMQ219.DATA.OUT'.
+JMS attempted to perform an MQOPEN, but IBM MQ reported an error.
+Use the linked exception to determine the cause of this error. Check that the specified queue and queue manager are defined correctly.
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:627)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1321)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:277)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1167)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593)
+	... 27 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.jms.MessageProducer]: Factory method 'jmsResponseProducer' threw exception; nested exception is com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2008: Failed to open MQ queue 'PTSMQ219.DATA.OUT'.
+JMS attempted to perform an MQOPEN, but IBM MQ reported an error.
+Use the linked exception to determine the cause of this error. Check that the specified queue and queue manager are defined correctly.
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:622)
+	... 40 common frames omitted
+Caused by: com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2008: Failed to open MQ queue 'PTSMQ219.DATA.OUT'.
+	at com.ibm.msg.client.wmq.common.internal.Reason.reasonToException(Reason.java:531)
+	at com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:215)
+	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.checkJmqiCallSuccess(WMQMessageProducer.java:1263)
+	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.checkJmqiCallSuccess(WMQMessageProducer.java:1220)
+	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.access$800(WMQMessageProducer.java:75)
+	at com.ibm.msg.client.wmq.internal.WMQMessageProducer$SpiIdentifiedProducerShadow.initialise(WMQMessageProducer.java:816)
+	at com.ibm.msg.client.wmq.internal.WMQMessageProducer.<init>(WMQMessageProducer.java:1196)
+	at com.ibm.msg.client.wmq.internal.WMQSession.createProducer(WMQSession.java:1127)
+	at com.ibm.msg.client.jms.internal.JmsSessionImpl.createProducer(JmsSessionImpl.java:1504)
+	at com.ibm.mq.jms.MQSession.createProducer(MQSession.java:661)
+	at com.alphaliongroup.core.sgxgateway.config.JmsConfig.jmsResponseProducer(JmsConfig.java:170)
+	at com.alphaliongroup.core.sgxgateway.config.JmsConfig$$EnhancerBySpringCGLIB$$507124f0.CGLIB$jmsResponseProducer$0(<generated>)
+	at com.alphaliongroup.core.sgxgateway.config.JmsConfig$$EnhancerBySpringCGLIB$$507124f0$$FastClassBySpringCGLIB$$8668e059.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363)
+	at com.alphaliongroup.core.sgxgateway.config.JmsConfig$$EnhancerBySpringCGLIB$$507124f0.jmsResponseProducer(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 41 common frames omitted
+Caused by: com.ibm.mq.MQException: JMSCMQ0001: IBM MQ call failed with compcode '2' ('MQCC_FAILED') reason '2035' ('MQRC_NOT_AUTHORIZED').
+	at com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:203)
+	... 60 common frames omitted

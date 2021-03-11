@@ -1,0 +1,120 @@
+" ============================================================================
+" Netrw Directory Listing                                        (netrw v149)
+"   /home/centos/tiger/ng-gateway/ibmmq
+"   Sorted by      name
+"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$
+"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:exec
+" ============================================================================
+../
+./
+FFDC/
+src/
+target/
+tiger/
+start-con.sh*
+start.sh*
+keystore.jks
+mqjms.log.0
+pom.xml
+request.xml.old
+sgx-data.log
+.swp
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+"~/tiger/ng-gateway/ibmmq" is a directory                                                                                                                       1,1           All
+<?xml version="1.0"?>
+<Wrapper xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns="sgx:npts:openapi">
+  <Header>
+    <Message>
+      <SenderReference>219_17</SenderReference>
+      <MessageIdentifier>admi.002.001.01</MessageIdentifier>
+      <Format>MX</Format>
+      <Sender>
+        <OpenAPIID>SGXPTS</OpenAPIID>
+      </Sender>
+      <Receiver>
+        <OpenAPIID>219</OpenAPIID>
+      </Receiver>
+      <FlowType>Response</FlowType>
+    </Message>
+  </Header>
+  <Body><![CDATA[<?xml version="1.0"?>
+<ISO20022>
+  <AppHdr xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:head.001.001.01">
+    <Fr>
+      <FIId>
+        <FinInstnId>
+          <Othr>
+            <Id>CDP</Id>
+          </Othr>
+        </FinInstnId>
+      </FIId>
+    </Fr>
+    <To>
+      <FIId>
+        <FinInstnId>
+          <Othr>
+            <Id>219</Id>
+          </Othr>
+        </FinInstnId>
+      </FIId>
+    </To>
+    <BizMsgIdr>219_17</BizMsgIdr>
+    <MsgDefIdr>admi.002.001.01</MsgDefIdr>
+"~/tiger/ng-gateway/ibmmq/src/main/resources/request.xml" 59L, 1580C                                                                                            1,1           Top
+<?xml version="1.0"?>
+<Wrapper xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns="sgx:npts:openapi">
+  <Header>
+    <Message>
+      <SenderReference>219_17</SenderReference>
+      <MessageIdentifier>admi.002.001.01</MessageIdentifier>
+      <Format>MX</Format>
+      <Sender>
+        <OpenAPIID>SGXPTS</OpenAPIID>
+      </Sender>
+      <Receiver>
+        <OpenAPIID>219</OpenAPIID>
+      </Receiver>
+      <FlowType>Response</FlowType>
+    </Message>
+  </Header>
+  <Body><![CDATA[<?xml version="1.0"?>
+<ISO20022>
+  <AppHdr xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:head.001.001.01">
+    <Fr>
+      <FIId>
+        <FinInstnId>
+          <Othr>
+            <Id>CDP</Id>
+          </Othr>
+        </FinInstnId>
+      </FIId>
+    </Fr>
+    <To>
+      <FIId>
+        <FinInstnId>
+          <Othr>
+            <Id>219</Id>
+          </Othr>
+        </FinInstnId>
+      </FIId>
+    </To>
+    <BizMsgIdr>219_17</BizMsgIdr>
+    <MsgDefIdr>admi.002.001.01</MsgDefIdr>
+"~/tiger/ng-gateway/ibmmq/src/main/resources/request.xml" 59L, 1580C                                                                                            1,1           Top
