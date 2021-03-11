@@ -50,7 +50,7 @@ public class MQApplication implements CommandLineRunner {
         log.info("Transport type: {}", connectionFactory.getTransportType());
         //log.info("JMS", connectionFactory.getPr)
         //connectionFactory.setTransportType(WMQConstants.WMQ_CM_CLIENT);
-        connectionFactory.setIntProperty(WMQConstants.JMS_IBM_FORMAT, WMQConstants.);
+        //connectionFactory.setIntProperty(WMQConstants.JMS_IBM_FORMAT, WMQConstants.);
         InputStream inputStream = MQApplication.class.getClassLoader().getResourceAsStream("request.xml");
         String text = new BufferedReader(
                 new InputStreamReader(inputStream, StandardCharsets.UTF_8))
