@@ -28,8 +28,8 @@ public class MQApplication implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(MQApplication.class);
 
-//    @Autowired
-//    JmsTemplate jmsTemplate;
+    @Autowired
+    JmsTemplate jmsTemplate;
 
     @Autowired
     MQConnectionFactory connectionFactory;
@@ -41,6 +41,7 @@ public class MQApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
 //        MQConnectionFactory mqConnectionFactory = (MQConnectionFactory) ((CachingConnectionFactory)jmsTemplate.getConnectionFactory()).getTargetConnectionFactory();
 //        log.info(mqConnectionFactory.toString());
 //        //log.info(mqConnectionFactory.getHostName());
@@ -60,7 +61,7 @@ public class MQApplication implements CommandLineRunner {
         String msg = text;
         // Send a single message with a timestamp
         //String msg = "Hello from IBM MQ at " + new Date();
-        String correlationID = RandomString.make();
+        String correlationID = "2021030977376656";//RandomString.make();
         // The default SimpleMessageConverter class will be called and turn a String
         // into a JMS TextMessage
         log.info("Sending msg: {} with correlation id {}", msg, correlationID);
