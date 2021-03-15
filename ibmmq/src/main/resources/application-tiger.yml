@@ -2,12 +2,9 @@ ibm:
   mq:
     pool:
       enabled: true
-    queueManager: mqdev
-    connName: mqdev-efs-LoadBala-1DV8M3TLB6MBI-1870985021.ap-southeast-1.elb.amazonaws.com(1414)
-    channel: PASSWORD.SVRCONN
-    user: johndoe
-    password: passw0rd
-    #ccdtUrl: file:///Users/jerrywang/self/mycode/ng-gateway/ibmmq/src/main/resources/AMQCLCHL.TAB_219_MDEV
+    queueManager: QMPTSMDEV
+    user:
+    ccdtUrl: file:///Users/jerrywang/self/mycode/ng-gateway/ibmmq/src/main/resources/AMQCLCHL.TAB_219_MDEV
 
 spring:
   jms:
@@ -20,9 +17,9 @@ logging:
 
 top:
   mq:
-    outQueueName: Q1
-    inQueueName: Q1
-    tps: 10
+    outQueueName: queue1
+    inQueueName: queue1
+    tps: 100
     total: 10
 #ibm.mq.channel=SYSTEM.DEF.SVRCONN
 #ibm.mq.connName=localhost(1414)
