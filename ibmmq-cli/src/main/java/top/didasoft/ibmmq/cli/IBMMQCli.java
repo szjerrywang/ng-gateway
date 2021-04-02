@@ -16,7 +16,7 @@ import java.lang.management.ManagementFactory;
 @Cli(name = "ibmmqcli",
         description = "Provides a IBM MQ CLI",
         defaultCommand = Help.class,
-        commands = {QueueInfoCommand.class, QueuesCommand.class, BashCompletion.class, Manuals.class, Help.class })
+        commands = {RedisCommand.class, QueueInfoCommand.class, QueuesCommand.class, BashCompletion.class, Manuals.class, Help.class })
 public class IBMMQCli {
 //    public static void main(String[] args) {
 //        com.github.rvesse.airline.Cli<Runnable> cli = new com.github.rvesse.airline.Cli<>(IBMMQCli.class);
