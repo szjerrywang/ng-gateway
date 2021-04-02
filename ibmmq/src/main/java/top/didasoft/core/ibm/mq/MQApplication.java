@@ -1,19 +1,30 @@
 package top.didasoft.core.ibm.mq;
 
+
+import com.ibm.mq.*;
+import com.ibm.mq.constants.CMQC;
+import com.ibm.mq.constants.MQConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jms.annotation.EnableJms;
-import org.springframework.scheduling.annotation.EnableScheduling;
+import top.didasoft.core.ibm.mq.config.MQAppConfig;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 @SpringBootApplication
-@EnableJms
-@EnableScheduling
+//@EnableJms
+//@EnableScheduling
 public class MQApplication implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(MQApplication.class);
+
+    @Autowired
+    MQAppConfig mqAppConfig;
 
 //    @Autowired
 //    JmsTemplate jmsTemplate;
@@ -21,13 +32,83 @@ public class MQApplication implements CommandLineRunner {
 //    @Autowired
 //    MQConnectionFactory connectionFactory;
 
-    public static final void main(String[] args)
-    {
+    public static final void main(String[] args) {
         SpringApplication.run(MQApplication.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
+        MQEnvironment.hostname = mqAppConfig.getHost();
+        MQEnvironment.port = mqAppConfig.getPort();
+        MQEnvironment.channel = mqAppConfig.getChannel();
+        MQEnvironment.userID = mqAppConfig.getUserId();
+        MQEnvironment.password = mqAppConfig.getPassword();
+        MQEnvironment.properties.put(MQConstants.APPNAME_PROPERTY, mqAppConfig.getAppName());
+
+        MQQueueManager queueManager = new MQQueueManager(mqAppConfig.getqMgrName());
+
+        MQQueue queue = null;
+
+        try {
+            queue = queueManager.accessQueue(mqAppConfig.getOutQueueName(), CMQC.MQOO_INPUT_AS_Q_DEF);
+
+            //CMQC.MQOO_BROWSE
+            MQMessage myMessage = new MQMessage();
+            myMessage.writeInt(25);
+
+            String name = "Charlie Jordan";
+            myMessage.writeInt(name.length());
+            myMessage.writeString(name);
+            //myMessage.writeBytes(name);
+
+// Use the default put message options...
+            MQPutMessageOptions pmo = new MQPutMessageOptions();
+//            pmo.options
+
+// put the message
+            //queue.put(myMessage,pmo);
+
+            MQMessage getMessage = new MQMessage();
+            MQGetMessageOptions gmo = new MQGetMessageOptions();
+            gmo.options += MQConstants.MQGMO_WAIT;
+            gmo.waitInterval = 1000;
+            queue.get(getMessage, gmo);
+
+
+
+//            queue.get();
+        }
+        catch (Exception e)
+        {
+            log.error("Exception: ", e);
+        }
+        finally {
+            if (queue != null) {
+                queue.close();
+            }
+        }
+    }
+
+    private void runScheduler() throws ExecutionException, InterruptedException {
+
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+
+        List<ScheduledFuture<?>> futures = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            ScheduledFuture<?> scheduledFuture = scheduler.schedule(new MetricsTask(i), 1, TimeUnit.SECONDS);
+            futures.add(scheduledFuture);
+        }
+        for (int i = 0; i < 100; i++) {
+            Object o = futures.get(0).get();
+        }
+
+        scheduler.shutdown();
+
+//        scheduler
+//            scheduler.s
+        //scheduler.scheduleAtFixedRate(() -> log.info("hee"), 1, 1, TimeUnit.SECONDS);
+
+//        ConcurrentTaskExecutor taskExecutor = new ConcurrentTaskExecutor()
 
 ////        MQConnectionFactory mqConnectionFactory = (MQConnectionFactory) ((CachingConnectionFactory)jmsTemplate.getConnectionFactory()).getTargetConnectionFactory();
 ////        log.info(mqConnectionFactory.toString());

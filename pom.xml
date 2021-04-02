@@ -14,6 +14,7 @@
 		<module>ibmmq</module>
         <module>ssl-server</module>
         <module>ssl-client</module>
+        <module>ibmmq-cli</module>
 
     </modules>
 	<name>Spring Main Project</name>

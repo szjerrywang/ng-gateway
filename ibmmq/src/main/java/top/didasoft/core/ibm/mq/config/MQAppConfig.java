@@ -7,9 +7,23 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties("top.mq")
 public class MQAppConfig {
 
+    private String host;
+
+    private int port;
+
+    private String qMgrName;
+
+    private String channel;
+
+    private String userId;
+
+    private String password;
+
     private String outQueueName;
 
     private String inQueueName;
+
+    private String appName;
 
     private int tps;
 
@@ -45,5 +59,61 @@ public class MQAppConfig {
 
     public void setTps(int tps) {
         this.tps = tps;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public String getChannel() {
+        return channel;
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getqMgrName() {
+        return qMgrName;
+    }
+
+    public void setqMgrName(String qMgrName) {
+        this.qMgrName = qMgrName;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getAppName() {
+        return appName;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
     }
 }

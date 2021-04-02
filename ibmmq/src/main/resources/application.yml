@@ -24,6 +24,13 @@ top:
     inQueueName: Q1
     tps: 10
     total: 10
+    qMgrName: mqdev
+    host: mqdev-efs-LoadBala-1DV8M3TLB6MBI-1870985021.ap-southeast-1.elb.amazonaws.com
+    port: 1414
+    channel: PASSWORD.SVRCONN
+    userId: johndoe
+    password: passw0rd
+    appName: "Top application"
 #ibm.mq.channel=SYSTEM.DEF.SVRCONN
 #ibm.mq.connName=localhost(1414)
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="defaults.xml"/>
+    <include resource="console-appender.xml" />
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+<!--    <logger name="org.springframework.web" level="DEBUG"/>-->
+</configuration>
