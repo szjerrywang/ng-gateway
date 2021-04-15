@@ -8,10 +8,15 @@ import io.lettuce.core.api.sync.RedisCommands;
 import io.lettuce.core.cluster.RedisClusterClient;
 import io.lettuce.core.cluster.api.StatefulRedisClusterConnection;
 import io.lettuce.core.cluster.api.sync.RedisAdvancedClusterCommands;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import top.didasoft.ibmmq.cli.CommandRunnable;
 
 @Command(name = "redis", description = "A command that connect redis to put some key")
 public class RedisCommand implements CommandRunnable {
+
+    private static final Logger log = LoggerFactory.getLogger(RedisCommand.class);
+
     @Option(name = { "-v", "--verbose" }, description = "Enables verbose mode")
     protected boolean verbose = false;
 

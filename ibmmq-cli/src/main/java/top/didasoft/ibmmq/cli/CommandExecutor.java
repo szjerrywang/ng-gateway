@@ -62,4 +62,11 @@ public class CommandExecutor {
             e.printStackTrace(System.err);
         }
     }
+
+    public static void busyWaitMicros(long micros){
+        long waitUntil = System.nanoTime() + (micros * 1_000);
+        while(waitUntil > System.nanoTime()){
+            ;
+        }
+    }
 }
