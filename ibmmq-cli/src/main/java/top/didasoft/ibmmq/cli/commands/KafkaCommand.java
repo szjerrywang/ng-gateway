@@ -15,6 +15,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.TopicPartitionInfo;
+import org.apache.kafka.common.errors.WakeupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.didasoft.ibmmq.cli.CommandRunnable;
@@ -31,6 +32,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Command(name = "kafka", description = "A command that test kafka")
 public class KafkaCommand implements CommandRunnable {
@@ -81,6 +83,8 @@ public class KafkaCommand implements CommandRunnable {
         return 0;
     }
 
+    private final AtomicBoolean closed = new AtomicBoolean(false);
+
     private int consumer() {
         Properties props = new Properties();
         props.setProperty("bootstrap.servers", broker);
@@ -97,14 +101,15 @@ public class KafkaCommand implements CommandRunnable {
             {
                 log.info("Shutdown hook is running...");
                 if (consumer != null) {
-                    consumer.close();
+                    closed.set(true);
+                    consumer.wakeup();
                 }
             }
         });
 
         try {
             consumer.subscribe(Arrays.asList(topic));
-            while (true) {
+            while (!closed.get()) {
                 ConsumerRecords<String, Object> records = consumer.poll(Duration.ofMillis(100));
                 for (ConsumerRecord<String, Object> record : records)
                     System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
@@ -115,8 +120,15 @@ public class KafkaCommand implements CommandRunnable {
                     break;
                 }
             }
-        } catch (Exception e) {
+        }
+        catch (WakeupException e) {
+            // Ignore exception if closing
+            if (!closed.get()) throw e;
+        }
+        catch (Exception e) {
+
             log.error("Exception", e);
+            if (!closed.get()) throw e;
         } finally {
             consumer.close();
         }
