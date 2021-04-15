@@ -60,9 +60,11 @@ public class KafkaCommand implements CommandRunnable {
     @Option(name = {"--groupName"}, title = "ConsumerGroupName", arity = 1, description = "Consumer Group Name")
     protected String groupName;
 
-    public enum Operation {query, createTopic, produceMsg, consumer}
+    public enum Operation {query, createTopic, produceMsg, consumer};
 
-    ;
+    @Option(name = {"--auto-commit"}, title = "Autocommit", description = "enable or disable auto commit")
+    protected boolean autoCommit = false;
+
 
     @Option(name = {"--operation"}, title = "Operation", arity = 1, description = "Specify kafka operation")
     protected Operation operation = Operation.query;
@@ -89,16 +91,14 @@ public class KafkaCommand implements CommandRunnable {
         Properties props = new Properties();
         props.setProperty("bootstrap.servers", broker);
         props.setProperty("group.id", groupName);
-        props.setProperty("enable.auto.commit", "true");
+        props.setProperty("enable.auto.commit", Boolean.toString(autoCommit));
         props.setProperty("auto.commit.interval.ms", "1000");
         props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.setProperty("value.deserializer", "top.didasoft.ibmmq.cli.commands.JsonDeserializer");
         final KafkaConsumer<String, Object> consumer = new KafkaConsumer<>(props);
 
-        Runtime.getRuntime().addShutdownHook(new Thread()
-        {
-            public void run()
-            {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
                 log.info("Shutdown hook is running...");
                 if (consumer != null) {
                     closed.set(true);
@@ -110,26 +110,26 @@ public class KafkaCommand implements CommandRunnable {
         try {
             consumer.subscribe(Arrays.asList(topic));
             while (!closed.get()) {
-                ConsumerRecords<String, Object> records = consumer.poll(Duration.ofMillis(100));
-                for (ConsumerRecord<String, Object> record : records)
+                ConsumerRecords<String, Object> records = consumer.poll(Duration.ofMillis(10000));
+                for (ConsumerRecord<String, Object> record : records) {
                     System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
-                try {
-                    Thread.sleep(0);
-                } catch (InterruptedException e) {
-                    log.error("Interrupted", e);
-                    break;
+//                try {
+//                    Thread.sleep(0);
+//                } catch (InterruptedException e) {
+//                    log.error("Interrupted", e);
+//                    break;
+//                }
                 }
             }
-        }
-        catch (WakeupException e) {
+        } catch (WakeupException e) {
             // Ignore exception if closing
             if (!closed.get()) throw e;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
             log.error("Exception", e);
             if (!closed.get()) throw e;
         } finally {
+            log.info("Close consumer...");
             consumer.close();
         }
 
@@ -342,7 +342,7 @@ public class KafkaCommand implements CommandRunnable {
 
         for (Map.Entry<TopicPartition, ListOffsetsResult.ListOffsetsResultInfo> entry : offsetsResultInfoMap.entrySet()) {
             log.info("Topic {}, Partition {}, Latest Offset {}"
-                , entry.getKey().topic(), entry.getKey().partition(), entry.getValue().offset());
+                    , entry.getKey().topic(), entry.getKey().partition(), entry.getValue().offset());
 
         }
         ListConsumerGroupOffsetsOptions listConsumerGroupOffsetsOptions = new ListConsumerGroupOffsetsOptions();
@@ -351,8 +351,8 @@ public class KafkaCommand implements CommandRunnable {
         Map<TopicPartition, OffsetAndMetadata> offsetAndMetadataMap = listConsumerGroupOffsetsResult.partitionsToOffsetAndMetadata().get();
         for (Map.Entry<TopicPartition, OffsetAndMetadata> entry : offsetAndMetadataMap.entrySet()) {
             log.info("Topic {}, Partition {}, Consumer Group Offset {}"
-                , entry.getKey().topic(), entry.getKey().partition(), entry.getValue().offset()
-                    );
+                    , entry.getKey().topic(), entry.getKey().partition(), entry.getValue().offset()
+            );
         }
 
 
