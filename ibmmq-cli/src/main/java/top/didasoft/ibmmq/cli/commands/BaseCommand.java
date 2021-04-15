@@ -38,6 +38,7 @@ public abstract class BaseCommand implements CommandRunnable {
     @Option(name = { "--port" }, title = "Port", arity = 1, description = "MQ queue manager listener port")
     protected int port = 1414;
 
+    @SuppressWarnings("unchecked")
     protected MQQueueManager createMQQueueManager() throws MQException {
         MQEnvironment.hostname = host;
         MQEnvironment.port = port;

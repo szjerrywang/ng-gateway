@@ -43,7 +43,7 @@ public class KafkaCommand implements CommandRunnable {
     protected boolean verbose = false;
 
     @Option(name = {"--broker"}, title = "Broker", arity = 1, description = "Kafka Broker")
-    protected String broker = "localhost:9092";
+    protected String broker = "127.0.0.1:9092";
 
     @Option(name = {"--topic"}, title = "Topic", arity = 1, description = "Kafka Topic name")
     protected String topic = "myevent";
