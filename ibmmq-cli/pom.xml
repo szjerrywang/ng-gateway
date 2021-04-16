@@ -129,11 +129,5 @@
         </plugins>
     </build>
 
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/szjerrywang/ng-gateway</url>
-        </repository>
-    </distributionManagement>
+
 </project>
