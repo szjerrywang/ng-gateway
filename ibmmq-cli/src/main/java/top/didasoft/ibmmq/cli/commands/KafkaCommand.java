@@ -107,10 +107,16 @@ public class KafkaCommand implements CommandRunnable {
             }
         });
 
+        final Map<Integer, Long> offsets = new HashMap<>();
+
         try {
             consumer.subscribe(Arrays.asList(topic));
             while (!closed.get()) {
+                for (Map.Entry<Integer, Long> offset : offsets.entrySet()) {
+                    consumer.seek(new TopicPartition(topic, offset.getKey()), offset.getValue());
+                }
                 ConsumerRecords<String, Object> records = consumer.poll(Duration.ofMillis(10000));
+                offsets.clear();
                 for (ConsumerRecord<String, Object> record : records) {
                     System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
 //                try {
@@ -119,6 +125,7 @@ public class KafkaCommand implements CommandRunnable {
 //                    log.error("Interrupted", e);
 //                    break;
 //                }
+                    offsets.put(record.partition(), record.offset());
                 }
             }
         } catch (WakeupException e) {
