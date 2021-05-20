@@ -17,8 +17,10 @@
         <module>ibmmq-cli</module>
         <module>zk-test</module>
         <module>zk-client</module>
+        <module>pure-spring-boot</module>
+		<module>pure-app</module>
 
-    </modules>
+	</modules>
 	<name>Spring Main Project</name>
 	<description>Main project using Spring Boot</description>
 

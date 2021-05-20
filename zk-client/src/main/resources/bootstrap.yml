@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    zookeeper:
+#      connect-string: localhost:2181,localhost:2182,localhost:2183
+      connect-string: {zookeeper-connect-string}
+      config:
+        enabled: true
+        root: configuration
+        defaultContext: hello
+        profileSeparator: '::'
+      discovery:
+        enabled: true
+  application:
+    name: HelloWorldClient
+logging:
+  level:
+    org.apache.zookeeper.ClientCnxn: WARN
