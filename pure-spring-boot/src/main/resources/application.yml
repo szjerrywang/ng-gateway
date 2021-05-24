@@ -1,0 +1,6 @@
+spring:
+  resources:
+    add-mappings: false
+  mvc:
+    favicon:
+      enabled: false
