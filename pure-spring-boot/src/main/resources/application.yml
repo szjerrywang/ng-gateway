@@ -4,3 +4,18 @@ spring:
   mvc:
     favicon:
       enabled: false
+
+management:
+#  endpoint:
+#    info:
+#      enabled: true
+#  info:
+#    defaults:
+#      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#  metrics:
+#    enable:
+#      all: true
