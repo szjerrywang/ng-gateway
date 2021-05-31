@@ -21,4 +21,10 @@ public class HelloWorldController {
         simpleModel.setName("My model");
         return new ResponseEntity<SimpleModel>(simpleModel, HttpStatus.OK);
     }
+
+    @GetMapping("/delay")
+    public String delay(long delayMs) {
+        PureApplication.pause(delayMs);
+        return "Delayed " + delayMs;
+    }
 }

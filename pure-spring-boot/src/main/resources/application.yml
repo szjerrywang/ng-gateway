@@ -19,3 +19,8 @@ management:
 #  metrics:
 #    enable:
 #      all: true
+
+server:
+  tomcat:
+    maxThreads: 5
+    minSpareThreads: 1

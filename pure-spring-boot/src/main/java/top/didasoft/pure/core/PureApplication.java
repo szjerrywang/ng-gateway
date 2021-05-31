@@ -9,6 +9,7 @@ import org.springframework.boot.actuate.autoconfigure.endpoint.web.servlet.WebMv
 import org.springframework.boot.actuate.autoconfigure.env.EnvironmentEndpointAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.info.InfoContributorAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.info.InfoEndpointAutoConfiguration;
+import org.springframework.boot.actuate.autoconfigure.management.ThreadDumpEndpointAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.metrics.CompositeMeterRegistryAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.metrics.JvmMetricsAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
@@ -19,6 +20,7 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
@@ -27,8 +29,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootConfiguration
-@ImportAutoConfiguration(value = {DispatcherServletAutoConfiguration.class, ServletWebServerFactoryAutoConfiguration.class, WebMvcAutoConfiguration.class, ServletManagementContextAutoConfiguration.class, ErrorMvcAutoConfiguration.class, JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class, EndpointAutoConfiguration.class, WebEndpointAutoConfiguration.class, WebMvcEndpointManagementContextConfiguration.class, InfoEndpointAutoConfiguration.class, InfoContributorAutoConfiguration.class, EnvironmentEndpointAutoConfiguration.class, BeansEndpointAutoConfiguration.class,
-        CompositeMeterRegistryAutoConfiguration.class, MetricsAutoConfiguration.class, MetricsEndpointAutoConfiguration.class, JvmMetricsAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class})
+@ImportAutoConfiguration(value = {DispatcherServletAutoConfiguration.class, ServletWebServerFactoryAutoConfiguration.class, EmbeddedWebServerFactoryCustomizerAutoConfiguration.class, WebMvcAutoConfiguration.class, ServletManagementContextAutoConfiguration.class, ErrorMvcAutoConfiguration.class, JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class, EndpointAutoConfiguration.class, WebEndpointAutoConfiguration.class, WebMvcEndpointManagementContextConfiguration.class, InfoEndpointAutoConfiguration.class, InfoContributorAutoConfiguration.class, EnvironmentEndpointAutoConfiguration.class, BeansEndpointAutoConfiguration.class,
+        CompositeMeterRegistryAutoConfiguration.class, MetricsAutoConfiguration.class, MetricsEndpointAutoConfiguration.class, JvmMetricsAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class, ThreadDumpEndpointAutoConfiguration.class})
 //@ComponentScan(basePackages = {"top.didasoft.pure.core"})
 //@SpringBootApplication
 public class PureApplication {
@@ -40,5 +42,16 @@ public class PureApplication {
 
     public static void main(String args[]) {
         SpringApplication.run(PureApplication.class, args);
+    }
+
+    public static void pause(long timeInMilliSeconds) {
+
+        long timestamp = System.currentTimeMillis();
+
+
+        do {
+
+        } while (System.currentTimeMillis() < timestamp + timeInMilliSeconds);
+
     }
 }
