@@ -17,27 +17,38 @@ import org.springframework.boot.actuate.autoconfigure.metrics.MetricsEndpointAut
 import org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.web.servlet.ServletManagementContextAutoConfiguration;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
-import org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.core.env.Environment;
 
 @SpringBootConfiguration
-@ImportAutoConfiguration(value = {DispatcherServletAutoConfiguration.class, ServletWebServerFactoryAutoConfiguration.class, EmbeddedWebServerFactoryCustomizerAutoConfiguration.class, WebMvcAutoConfiguration.class, ServletManagementContextAutoConfiguration.class, ErrorMvcAutoConfiguration.class, JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class, EndpointAutoConfiguration.class, WebEndpointAutoConfiguration.class, WebMvcEndpointManagementContextConfiguration.class, InfoEndpointAutoConfiguration.class, InfoContributorAutoConfiguration.class, EnvironmentEndpointAutoConfiguration.class, BeansEndpointAutoConfiguration.class,
+@ImportAutoConfiguration(value = {DispatcherServletAutoConfiguration.class, ServletWebServerFactoryAutoConfiguration.class,  WebMvcAutoConfiguration.class, ServletManagementContextAutoConfiguration.class, ErrorMvcAutoConfiguration.class, JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class, EndpointAutoConfiguration.class, WebEndpointAutoConfiguration.class, WebMvcEndpointManagementContextConfiguration.class, InfoEndpointAutoConfiguration.class, InfoContributorAutoConfiguration.class, EnvironmentEndpointAutoConfiguration.class, BeansEndpointAutoConfiguration.class,
         CompositeMeterRegistryAutoConfiguration.class, MetricsAutoConfiguration.class, MetricsEndpointAutoConfiguration.class, JvmMetricsAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class, ThreadDumpEndpointAutoConfiguration.class})
 //@ComponentScan(basePackages = {"top.didasoft.pure.core"})
 //@SpringBootApplication
+@EnableConfigurationProperties(ServerProperties.class)
 public class PureApplication {
 
     @Bean
     HelloWorldController helloWorldController() {
         return new HelloWorldController();
+    }
+
+//    @Bean
+//    MyTomcatConnectorCustomizer myTomcatConnectorCustomizer() {
+//        return new MyTomcatConnectorCustomizer();
+//    }
+
+    @Bean
+    MyTomcatWebServerFactoryCustomizer myTomcatWebServerFactoryCustomizer(Environment env, ServerProperties serverProperties) {
+        return new MyTomcatWebServerFactoryCustomizer(env, serverProperties);
     }
 
     public static void main(String args[]) {

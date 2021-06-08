@@ -19,8 +19,9 @@
         <module>zk-client</module>
         <module>pure-spring-boot</module>
 		<module>pure-app</module>
+        <module>pure-rest-client</module>
 
-	</modules>
+    </modules>
 	<name>Spring Main Project</name>
 	<description>Main project using Spring Boot</description>
 
