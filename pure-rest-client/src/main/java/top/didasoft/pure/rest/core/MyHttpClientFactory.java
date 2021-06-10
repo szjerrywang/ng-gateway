@@ -23,7 +23,7 @@ public class MyHttpClientFactory extends HttpComponentsClientHttpRequestFactory 
             }
         };
         CloseableHttpClient client
-                = HttpClients.custom().setConnectionManager(poolingConnManager)
+                = HttpClients.custom().setConnectionManager(poolingConnManager).disableAutomaticRetries()
                 .build();
         setHttpClient(client);
 

@@ -42,6 +42,7 @@ public class RestClientApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        //restTemplateBuilder = restTemplateBuilder.requestFactory(new CustomClientHttpRequestFactorySupplier());
 //        restTemplateBuilder = restTemplateBuilder.detectRequestFactory(false);
 //        restTemplateBuilder = restTemplateBuilder.requestFactory(MyHttpClientFactory.class);
 
@@ -51,15 +52,17 @@ public class RestClientApplication implements CommandLineRunner {
 
         threadPoolTaskExecutor.setCorePoolSize(5);
         threadPoolTaskExecutor.setMaxPoolSize(10);
+        threadPoolTaskExecutor.setQueueCapacity(1);
         threadPoolTaskExecutor.afterPropertiesSet();
         threadPoolTaskExecutor.setThreadNamePrefix("restclient");
 
         ArrayList<ListenableFuture<?>> futures = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             ListenableFuture<?> listenable = threadPoolTaskExecutor.submitListenable(() -> {
+                log.info("Requesting...");
                 try {
-                    ResponseEntity<String> responseEntity = restTemplate1.getForEntity("http://localhost:8080/hello", String.class);
+                    ResponseEntity<String> responseEntity = restTemplate1.getForEntity("http://localhost:8080/delay?delayMs=10", String.class);
                     log.info("Response: {}", responseEntity.getBody());
                 } catch (Exception e) {
                     log.error("rest client exception", e);
@@ -71,10 +74,13 @@ public class RestClientApplication implements CommandLineRunner {
         log.info("Waiting all requests to completed.");
         CompletableFuture<?> completableFuture = new CompletableFuture<>();
         List<? extends CompletableFuture<?>> completableFutures = futures.stream().map(listenableFuture -> listenableFuture.completable()).collect(Collectors.toList());
-        completableFuture.allOf(completableFutures.toArray(new CompletableFuture[completableFutures.size()]));
+        completableFuture.allOf(completableFutures.toArray(new CompletableFuture[completableFutures.size()])).get();
 
         log.info("All requests completed.");
+        threadPoolTaskExecutor.setWaitForTasksToCompleteOnShutdown(true);
+        threadPoolTaskExecutor.setAwaitTerminationSeconds(30);
         threadPoolTaskExecutor.shutdown();
+
 //        log.info(restTemplate1.getRequestFactory().toString());
 //
 //        log.info("restTemplate 1: {}", restTemplate1.toString());

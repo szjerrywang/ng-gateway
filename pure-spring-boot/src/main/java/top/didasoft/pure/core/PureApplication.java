@@ -41,14 +41,17 @@ public class PureApplication {
         return new HelloWorldController();
     }
 
+    @Bean
+    GracefulShutdown gracefulShutdown() { return new GracefulShutdown(); }
+
 //    @Bean
 //    MyTomcatConnectorCustomizer myTomcatConnectorCustomizer() {
 //        return new MyTomcatConnectorCustomizer();
 //    }
 
     @Bean
-    MyTomcatWebServerFactoryCustomizer myTomcatWebServerFactoryCustomizer(Environment env, ServerProperties serverProperties) {
-        return new MyTomcatWebServerFactoryCustomizer(env, serverProperties);
+    MyTomcatWebServerFactoryCustomizer myTomcatWebServerFactoryCustomizer(Environment env, ServerProperties serverProperties, GracefulShutdown gracefulShutdown) {
+        return new MyTomcatWebServerFactoryCustomizer(env, serverProperties, gracefulShutdown);
     }
 
     public static void main(String args[]) {

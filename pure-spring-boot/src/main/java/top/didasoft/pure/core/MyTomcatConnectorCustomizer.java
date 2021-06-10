@@ -8,16 +8,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.stereotype.Component;
 
-@Component
 public class MyTomcatConnectorCustomizer implements TomcatConnectorCustomizer {
 
     private static final Logger log = LoggerFactory.getLogger(MyTomcatConnectorCustomizer.class);
 
+//    private GracefulShutdown gracefulShutdown;
+//
+//    public MyTomcatConnectorCustomizer(GracefulShutdown gracefulShutdown) {
+//        this.gracefulShutdown = gracefulShutdown;
+//    }
 
     @Override
     public void customize(Connector connector) {
 
-        log.info(connector.getProtocolHandlerClassName());
+        log.info("Customizing tomcat connector {}", connector.getProtocolHandlerClassName());
         ProtocolHandler handler = connector.getProtocolHandler();
         if (handler instanceof AbstractHttp11Protocol) {
             AbstractHttp11Protocol<?> protocol = (AbstractHttp11Protocol<?>) handler;

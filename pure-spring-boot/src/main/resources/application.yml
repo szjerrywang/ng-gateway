@@ -24,3 +24,10 @@ server:
   tomcat:
     maxThreads: 5
     minSpareThreads: 1
+
+#logging:
+#  level:
+#    org:
+#      apache:
+#        tomcat: DEBUG
+#        catalina: DEBUG

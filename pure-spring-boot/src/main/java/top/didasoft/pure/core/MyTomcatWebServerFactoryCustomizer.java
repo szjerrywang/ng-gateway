@@ -9,15 +9,17 @@ import org.springframework.stereotype.Component;
 
 
 public class MyTomcatWebServerFactoryCustomizer extends TomcatWebServerFactoryCustomizer {
-    public MyTomcatWebServerFactoryCustomizer(Environment environment, ServerProperties serverProperties) {
-        super(environment, serverProperties);
+    private GracefulShutdown gracefulShutdown;
 
+    public MyTomcatWebServerFactoryCustomizer(Environment environment, ServerProperties serverProperties, GracefulShutdown gracefulShutdown) {
+        super(environment, serverProperties);
+        this.gracefulShutdown = gracefulShutdown;
     }
 
     @Override
     public void customize(ConfigurableTomcatWebServerFactory factory) {
         super.customize(factory);
 
-        factory.addConnectorCustomizers(new MyTomcatConnectorCustomizer());
+        factory.addConnectorCustomizers(new MyTomcatConnectorCustomizer(), gracefulShutdown);
     }
 }
