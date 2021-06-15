@@ -1,0 +1,10 @@
+#spring.cloud.discovery.client.simple.instances.service1[0].uri=http://s11:8080
+
+spring:
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            localhost:
+              - uri : http://localhost:8080

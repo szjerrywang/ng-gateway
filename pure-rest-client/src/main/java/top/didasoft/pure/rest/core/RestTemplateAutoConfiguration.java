@@ -8,16 +8,19 @@ import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.client.RestTemplateCustomizer;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Configuration
-@AutoConfigureAfter(HttpMessageConvertersAutoConfiguration.class)
+@AutoConfigureAfter({HttpMessageConvertersAutoConfiguration.class, LoadBalancerAutoConfiguration.class})
 @ConditionalOnClass(RestTemplate.class)
 public class RestTemplateAutoConfiguration {
 
@@ -35,6 +38,7 @@ public class RestTemplateAutoConfiguration {
 	CustomClientHttpRequestFactorySupplier customClientHttpRequestFactorySupplier() {
 		return new CustomClientHttpRequestFactorySupplier();
 	}
+
 
 	@Bean
 	@ConditionalOnMissingBean
