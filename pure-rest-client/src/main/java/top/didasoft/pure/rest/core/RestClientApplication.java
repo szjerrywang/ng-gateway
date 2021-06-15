@@ -66,7 +66,7 @@ public class RestClientApplication implements CommandLineRunner {
             ListenableFuture<?> listenable = threadPoolTaskExecutor.submitListenable(() -> {
                 log.info("Requesting...");
                 try {
-                    ResponseEntity<String> responseEntity = restTemplate1.getForEntity("http://localhost:8080/delay?delayMs=10", String.class);
+                    ResponseEntity<String> responseEntity = restTemplate1.getForEntity("http://localhost/helloworld", String.class);
                     log.info("Response: {}", responseEntity.getBody());
                 } catch (Exception e) {
                     log.error("rest client exception", e);

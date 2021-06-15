@@ -8,3 +8,5 @@ spring:
           instances:
             localhost:
               - uri : http://localhost:8080
+              - uri : http://localhost:8081
+              - uri : http://localhost:8082
