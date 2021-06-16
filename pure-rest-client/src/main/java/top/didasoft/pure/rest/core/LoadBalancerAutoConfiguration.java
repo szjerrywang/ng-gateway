@@ -18,7 +18,7 @@ import java.util.List;
 
 @Configuration
 @AutoConfigureBefore(RestTemplateAutoConfiguration.class)
-@EnableConfigurationProperties({SimpleDiscoveryProperties.class})
+@EnableConfigurationProperties({SimpleDiscoveryProperties.class, LoadBalancerRetryProperties.class})
 public class LoadBalancerAutoConfiguration {
     @Autowired
     SimpleDiscoveryProperties simpleDiscoveryProperties;
@@ -71,10 +71,39 @@ public class LoadBalancerAutoConfiguration {
             LoadBalancerRequestFactory requestFactory) {
         return new LoadBalancerInterceptor(loadBalancerClient, requestFactory);
     }
+    @Autowired
+    private LoadBalancerRetryProperties properties;
+
+    @Bean
+    LoadBalancedRetryFactory loadBalancedRetryFactory() {
+        return new CustomLoadBalancedRetryFactory();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public RetryLoadBalancerInterceptor retryInterceptor(
+            LoadBalancerClient loadBalancerClient,
+            LoadBalancerRetryProperties properties,
+            LoadBalancerRequestFactory requestFactory,
+            LoadBalancedRetryFactory loadBalancedRetryFactory) {
+        return new RetryLoadBalancerInterceptor(loadBalancerClient, properties,
+                requestFactory, loadBalancedRetryFactory);
+    }
+
+//    @Bean
+//    public RestTemplateCustomizer restTemplateCustomizer(
+//            final LoadBalancerInterceptor loadBalancerInterceptor) {
+//        return restTemplate -> {
+//            List<ClientHttpRequestInterceptor> list = new ArrayList<>(
+//                    restTemplate.getInterceptors());
+//            list.add(loadBalancerInterceptor);
+//            restTemplate.setInterceptors(list);
+//        };
+//    }
 
     @Bean
     public RestTemplateCustomizer restTemplateCustomizer(
-            final LoadBalancerInterceptor loadBalancerInterceptor) {
+            final RetryLoadBalancerInterceptor loadBalancerInterceptor) {
         return restTemplate -> {
             List<ClientHttpRequestInterceptor> list = new ArrayList<>(
                     restTemplate.getInterceptors());
@@ -82,5 +111,4 @@ public class LoadBalancerAutoConfiguration {
             restTemplate.setInterceptors(list);
         };
     }
-
 }
