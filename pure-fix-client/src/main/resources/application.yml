@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: pure-kafka
+  resources:
+    add-mappings: false
+  mvc:
+    favicon:
+      enabled: false
+  kafka:
+    consumer:
+      groupid: test-pure
+      clientid: pure-client
+    listener:
+      concurrency: 3
+
+management:
+#  endpoint:
+#    info:
+#      enabled: true
+#  info:
+#    defaults:
+#      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#  metrics:
+#    enable:
+#      all: true
+
+server:
+  tomcat:
+    maxThreads: 5
+    minSpareThreads: 1
+
+#logging:
+#  level:
+#    org:
+#      apache:
+#        tomcat: DEBUG
+#        catalina: DEBUG
+

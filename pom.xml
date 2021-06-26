@@ -20,7 +20,8 @@
         <module>pure-spring-boot</module>
 		<module>pure-app</module>
         <module>pure-rest-client</module>
-
+		<module>pure-kafka</module>
+		<module>pure-fix-client</module>
     </modules>
 	<name>Spring Main Project</name>
 	<description>Main project using Spring Boot</description>

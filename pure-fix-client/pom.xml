@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>top.didasoft</groupId>
-    <artifactId>pure-spring-boot</artifactId>
+    <artifactId>pure-fix-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
@@ -20,26 +20,18 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.quickfixj/quickfixj-all -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>org.quickfixj</groupId>
+            <artifactId>quickfixj-all</artifactId>
+            <version>2.3.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-        </dependency>
+
 <!--        <dependency>-->
 <!--            <groupId>io.micrometer</groupId>-->
 <!--            <artifactId>micrometer-registry-prometheus</artifactId>-->
