@@ -4,6 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.SmartLifecycle;
 import quickfix.*;
+import quickfix.mina.ProtocolFactory;
+import quickfix.mina.acceptor.DynamicAcceptorSessionProvider;
+
+import java.net.SocketAddress;
 
 public class CustomFixAcceptor implements SmartLifecycle, FixService {
 
@@ -38,9 +42,15 @@ public class CustomFixAcceptor implements SmartLifecycle, FixService {
                     .withLogFactory(new SLF4JLogFactory(settings))
                     .withMessageStoreFactory(new FileStoreFactory(settings));
             socketAcceptor = builder.build();
+            String host = settings.isSetting(Acceptor.SETTING_SOCKET_ACCEPT_ADDRESS) ? settings.getString(Acceptor.SETTING_SOCKET_ACCEPT_ADDRESS) : null;
+            SocketAddress socketAddress = ProtocolFactory.createSocketAddress(ProtocolFactory.SOCKET, host , settings.getInt(Acceptor.SETTING_SOCKET_ACCEPT_PORT));
+            socketAcceptor.setSessionProvider(socketAddress, new DynamicAcceptorSessionProvider());
         } catch (ConfigError configError) {
             log.error("build error", configError);
+        } catch (FieldConvertError convertError) {
+            log.error("config error", convertError);
         }
+
 
 
 

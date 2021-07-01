@@ -27,7 +27,7 @@ public class CustomFixInitiator implements SmartLifecycle, FixService {
         SessionID sessionID = new SessionID(BEGIN_STRING, SENDER_COMPID, TARGET_COMPID);
         settings.setString(sessionID, Initiator.SETTING_SOCKET_CONNECT_HOST, "127.0.0.1");
         settings.setString(sessionID, Initiator.SETTING_SOCKET_CONNECT_PORT, "3232");
-        settings.setLong(sessionID, Session.SETTING_HEARTBTINT, 1L);
+        settings.setLong(sessionID, Session.SETTING_HEARTBTINT, 10L);
         settings.setBool(sessionID, Session.SETTING_NON_STOP_SESSION, true);
 
 

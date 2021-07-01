@@ -9,6 +9,11 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import quickfix.*;
 
+import java.time.LocalDateTime;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 @SpringBootConfiguration
 //@ImportAutoConfiguration(value = {KafkaAutoConfiguration.class})
 //@ComponentScan(basePackages = {"top.didasoft.pure.core"})
@@ -40,14 +45,24 @@ public class PureFixClientApplication implements CommandLineRunner {
     @Value("${pure.app.server:false}")
     private boolean isServer;
 
-    @Bean
-    FixService fixService() {
+//    @Bean
+//    FixService fixService() {
+//
+//        return isServer ? new CustomFixAcceptor() : new CustomFixInitiator();
+//    }
 
-        return isServer ? new CustomFixAcceptor() : new CustomFixInitiator();
-    }
-
+    private ScheduledExecutorService scheduledExecutorService;
     @Override
     public void run(String... args) throws Exception {
+
+        scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+
+        scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                log.info("current time: {}", LocalDateTime.now());
+            }
+        }, 1, 1, TimeUnit.SECONDS);
 
 //        SessionSettings settings = new SessionSettings();
 //
@@ -70,6 +85,20 @@ public class PureFixClientApplication implements CommandLineRunner {
 //        socketInitiator = builder.build();
 //
 //        socketInitiator.start();
+
+
+
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                scheduledExecutorService.shutdown();
+                try {
+                    scheduledExecutorService.awaitTermination(30, TimeUnit.SECONDS);
+                } catch (InterruptedException e) {
+                    log.error("wait error", e);
+                }
+            }
+        }));
 
         Thread.sleep(1500);
 
