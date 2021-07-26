@@ -1,0 +1,4 @@
+spring:
+  datasource:
+    name: mytest
+    url: jdbc:sqlite:/Users/jerrywang/work/mydatabase.db

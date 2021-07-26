@@ -1,15 +1,19 @@
 package top.didasoft.core.ibm.mq;
 
 
-import com.ibm.mq.*;
-import com.ibm.mq.constants.CMQC;
-import com.ibm.mq.constants.MQConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.config.JmsListenerEndpointRegistry;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.listener.DefaultMessageListenerContainer;
+import org.springframework.jms.listener.MessageListenerContainer;
 import top.didasoft.core.ibm.mq.config.MQAppConfig;
 
 import java.util.ArrayList;
@@ -17,7 +21,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 @SpringBootApplication
-//@EnableJms
+@EnableJms
 //@EnableScheduling
 public class MQApplication implements CommandLineRunner {
 
@@ -26,8 +30,33 @@ public class MQApplication implements CommandLineRunner {
     @Autowired
     MQAppConfig mqAppConfig;
 
+    @Autowired
+    JmsTemplate jmsTemplate;
+
+    @Autowired
+    DefaultJmsListenerContainerFactory defaultJmsListenerContainerFactory;
+
+
 //    @Autowired
-//    JmsTemplate jmsTemplate;
+//    DefaultMessageListenerContainer defaultMessageListenerContainer;
+
+    @Autowired
+    JmsListenerEndpointRegistry jmsListenerEndpointRegistry;
+
+    @Bean
+    CustomMessageListener customMessageListener() {
+        return new CustomMessageListener();
+    }
+
+    @Bean
+    Custom2MessageListener custom2MessageListener() {
+        return new Custom2MessageListener();
+    }
+
+    @Bean
+    ConsumerMonitor consumerMonitor() {
+        return new ConsumerMonitor();
+    }
 //
 //    @Autowired
 //    MQConnectionFactory connectionFactory;
@@ -38,54 +67,111 @@ public class MQApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        MQEnvironment.hostname = mqAppConfig.getHost();
-        MQEnvironment.port = mqAppConfig.getPort();
-        MQEnvironment.channel = mqAppConfig.getChannel();
-        MQEnvironment.userID = mqAppConfig.getUserId();
-        MQEnvironment.password = mqAppConfig.getPassword();
-        MQEnvironment.properties.put(MQConstants.APPNAME_PROPERTY, mqAppConfig.getAppName());
 
-        MQQueueManager queueManager = new MQQueueManager(mqAppConfig.getqMgrName());
+        log.info("class {}", defaultJmsListenerContainerFactory.getClass());
 
-        MQQueue queue = null;
+        log.info("class {}", jmsListenerEndpointRegistry.getClass());
+
+//        log.info("transaction Manager: {}", defaultJmsListenerContainerFactory)
+
+        for (MessageListenerContainer listenerContainer: jmsListenerEndpointRegistry.getListenerContainers()) {
+            DefaultMessageListenerContainer defaultMessageListenerContainer = (DefaultMessageListenerContainer) listenerContainer;
+            log.info("session Ack Mode: {}", defaultMessageListenerContainer.getSessionAcknowledgeMode());
+
+            log.info("connectionFactory: {}", defaultMessageListenerContainer.getConnectionFactory());
+
+//            log.info("transactionManager: {}", defaultMessageListenerContainer.getConnectionFactory())
+        }
+
+//        sendMsgUseMultipleThreads();
+
+//        for (int i = 0; i < 1000; i++) {
+//            jmsTemplate.convertAndSend("DEV.QUEUE.1", "HEllO MESSAGE " + i);
+//        }
+
+        Thread.sleep(30000);
+//        MQEnvironment.hostname = mqAppConfig.getHost();
+//        MQEnvironment.port = mqAppConfig.getPort();
+//        MQEnvironment.channel = mqAppConfig.getChannel();
+//        MQEnvironment.userID = mqAppConfig.getUserId();
+//        MQEnvironment.password = mqAppConfig.getPassword();
+//        MQEnvironment.properties.put(MQConstants.APPNAME_PROPERTY, mqAppConfig.getAppName());
+//
+//        MQQueueManager queueManager = new MQQueueManager(mqAppConfig.getqMgrName());
+//
+//        MQQueue queue = null;
+//
+//        try {
+//            queue = queueManager.accessQueue(mqAppConfig.getOutQueueName(), CMQC.MQOO_INPUT_AS_Q_DEF);
+//
+//            //CMQC.MQOO_BROWSE
+//            MQMessage myMessage = new MQMessage();
+//            myMessage.writeInt(25);
+//
+//            String name = "Charlie Jordan";
+//            myMessage.writeInt(name.length());
+//            myMessage.writeString(name);
+//            //myMessage.writeBytes(name);
+//
+//// Use the default put message options...
+//            MQPutMessageOptions pmo = new MQPutMessageOptions();
+////            pmo.options
+//
+//// put the message
+//            //queue.put(myMessage,pmo);
+//
+//            MQMessage getMessage = new MQMessage();
+//            MQGetMessageOptions gmo = new MQGetMessageOptions();
+//            gmo.options += MQConstants.MQGMO_WAIT;
+//            gmo.waitInterval = 1000;
+//            queue.get(getMessage, gmo);
+//
+//
+//
+////            queue.get();
+//        }
+//        catch (Exception e)
+//        {
+//            log.error("Exception: ", e);
+//        }
+//        finally {
+//            if (queue != null) {
+//                queue.close();
+//            }
+//        }
+    }
+
+    private void sendMsgUseMultipleThreads() {
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+        ArrayList<Callable<Object>> tasks = new ArrayList<>(1000);
+
+        for (int i = 0; i < 1000; i++) {
+            final int current = i;
+
+            tasks.add(Executors.callable(new Runnable() {
+                @Override
+                public void run() {
+                    jmsTemplate.convertAndSend("DEV.QUEUE.1", "HEllO MESSAGE " + current);
+                    log.info("Message sent {}", current);
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }));
+        }
+
+
 
         try {
-            queue = queueManager.accessQueue(mqAppConfig.getOutQueueName(), CMQC.MQOO_INPUT_AS_Q_DEF);
-
-            //CMQC.MQOO_BROWSE
-            MQMessage myMessage = new MQMessage();
-            myMessage.writeInt(25);
-
-            String name = "Charlie Jordan";
-            myMessage.writeInt(name.length());
-            myMessage.writeString(name);
-            //myMessage.writeBytes(name);
-
-// Use the default put message options...
-            MQPutMessageOptions pmo = new MQPutMessageOptions();
-//            pmo.options
-
-// put the message
-            //queue.put(myMessage,pmo);
-
-            MQMessage getMessage = new MQMessage();
-            MQGetMessageOptions gmo = new MQGetMessageOptions();
-            gmo.options += MQConstants.MQGMO_WAIT;
-            gmo.waitInterval = 1000;
-            queue.get(getMessage, gmo);
-
-
-
-//            queue.get();
-        }
-        catch (Exception e)
-        {
-            log.error("Exception: ", e);
-        }
-        finally {
-            if (queue != null) {
-                queue.close();
-            }
+            executorService.invokeAll(tasks);
+            executorService.shutdown();
+            executorService.awaitTermination(10, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -99,7 +185,7 @@ public class MQApplication implements CommandLineRunner {
             futures.add(scheduledFuture);
         }
         for (int i = 0; i < 100; i++) {
-            Object o = futures.get(0).get();
+            Object o = futures.get(i).get();
         }
 
         scheduler.shutdown();

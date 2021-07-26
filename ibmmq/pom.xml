@@ -13,11 +13,11 @@
     <artifactId>ibmmq</artifactId>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.ibm.mq</groupId>-->
-<!--            <artifactId>mq-jms-spring-boot-starter</artifactId>-->
-<!--            <version>2.4.2</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.ibm.mq</groupId>
+            <artifactId>mq-jms-spring-boot-starter</artifactId>
+            <version>2.4.2</version>
+        </dependency>
         <dependency>
             <groupId>com.ibm.mq</groupId>
             <artifactId>com.ibm.mq.allclient</artifactId>
