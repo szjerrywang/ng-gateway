@@ -24,6 +24,7 @@
 		<module>pure-fix-client</module>
         <module>pure-jdbc-local</module>
         <module>pure-websocket</module>
+        <module>spring-aws</module>
     </modules>
 	<name>Spring Main Project</name>
 	<description>Main project using Spring Boot</description>
