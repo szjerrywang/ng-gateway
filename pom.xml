@@ -25,6 +25,8 @@
         <module>pure-jdbc-local</module>
         <module>pure-websocket</module>
         <module>spring-aws</module>
+        <module>pure-multi-thread</module>
+        <module>pure-rest-service</module>
     </modules>
 	<name>Spring Main Project</name>
 	<description>Main project using Spring Boot</description>

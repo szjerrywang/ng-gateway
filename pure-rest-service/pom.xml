@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>top.didasoft</groupId>
-    <artifactId>pure-kafka</artifactId>
+    <artifactId>pure-rest-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
@@ -22,47 +22,8 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-streams</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-ec2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-iam</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-sts</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-lambda</artifactId>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-aws-context</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.micrometer</groupId>-->
-<!--            <artifactId>micrometer-registry-prometheus</artifactId>-->
-<!--            <version>1.7.0</version>-->
-<!--        </dependency>-->
     </dependencies>
 
     <dependencyManagement>

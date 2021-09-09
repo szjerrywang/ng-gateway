@@ -58,6 +58,7 @@ public class RestClientApplication implements CommandLineRunner {
         threadPoolTaskExecutor.setMaxPoolSize(10);
         threadPoolTaskExecutor.setQueueCapacity(1);
         threadPoolTaskExecutor.afterPropertiesSet();
+
         threadPoolTaskExecutor.setThreadNamePrefix("restclient");
 
         ArrayList<ListenableFuture<?>> futures = new ArrayList<>();

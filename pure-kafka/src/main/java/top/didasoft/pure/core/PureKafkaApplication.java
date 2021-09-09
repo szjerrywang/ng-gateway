@@ -220,7 +220,10 @@ public class PureKafkaApplication implements CommandLineRunner {
             log.info("Started instance and getting state");
 
             DescribeInstancesRequest describeInstancesRequest = new DescribeInstancesRequest()
-                    .withInstanceIds(instance.getInstanceId());
+                    .withInstanceIds(instance.getInstanceId())
+                    .withFilters(new Filter("tag:purpose", Collections.singletonList("scaleup"))
+
+                    );
             DescribeInstancesResult describeInstancesResult = amazonEC2.describeInstances(describeInstancesRequest);
             Instance instanceDescribe = describeInstancesResult.getReservations().get(0).getInstances().get(0);
             InstanceState state = instanceDescribe.getState();
@@ -310,8 +313,8 @@ public class PureKafkaApplication implements CommandLineRunner {
 
             TerminateInstancesRequest terminateInstancesRequest = new TerminateInstancesRequest()
                     .withInstanceIds(commandProperties.getInstanceId());
-            StopInstancesRequest stopInstancesRequest = new StopInstancesRequest()
-                    .withInstanceIds(commandProperties.getInstanceId());
+//            StopInstancesRequest stopInstancesRequest = new StopInstancesRequest()
+//                    .withInstanceIds(commandProperties.getInstanceId());
             TerminateInstancesResult terminateInstancesResult = amazonEC2.terminateInstances(terminateInstancesRequest);
             int size = terminateInstancesResult.getTerminatingInstances().size();
 
@@ -510,6 +513,7 @@ public class PureKafkaApplication implements CommandLineRunner {
         AmazonEC2 amazonEC2 = amazonEC2ClientBuilder.withCredentials(awsStaticCredentialsProvider).withRegion(commandProperties.getDefaultRegion()).build();
 
         try {
+            IamInstanceProfileSpecification iamInstanceProfileSpecification = new IamInstanceProfileSpecification().withName("MYInstanceProfile");
             log.info("Starting instance...");
             TagSpecification tagSpecification = new TagSpecification()
                     .withResourceType(ResourceType.Instance)
@@ -520,6 +524,7 @@ public class PureKafkaApplication implements CommandLineRunner {
                     .withSecurityGroupIds(commandProperties.getSecurityGroupId())
                     .withSubnetId(commandProperties.getSubnetId())
                     .withTagSpecifications(tagSpecification)
+                    .withIamInstanceProfile(iamInstanceProfileSpecification)
                     .withUserData(Base64.getEncoder().encodeToString(commandProperties.getUserData().getBytes(StandardCharsets.UTF_8)));
 
             RunInstancesResult runInstancesResult = amazonEC2.runInstances(runRequest);
